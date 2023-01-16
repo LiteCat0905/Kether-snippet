@@ -1,0 +1,25 @@
+{
+  "name": "kether-snippet",
+  "displayName": "Kether-snippet",
+  "description": "Kether动作补全",
+  "publisher": "LiteCat",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "repository": {
+    "type": "git",
+    "url" : "https://github.com/LiteCat0905/Kether-snippet.git"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "yaml",
+        "path": "./snippets/TabooLib公有动作.code-snippets"
+      }
+    ]
+  }
+}

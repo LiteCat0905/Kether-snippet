@@ -1,0 +1,1012 @@
+//由 TabooLib 提供的公有动作
+{
+  "获取或设置玩家的额外生命": {
+    "prefix": "absorption",
+    "description": "player absorption amount [(add|to) {action}]",
+    "body": [
+        "player absorption amount $1",
+    ]
+  },
+  "将动作的返回值作为动作栏信息发送给执行者。": {
+    "prefix": "actionbar",
+    "description": "actionbar {action}",
+    "body": [
+        "actionbar \"$1\"",
+    ]
+  },
+  "判断动作列表的所有返回值是否均为是。": {
+    "prefix": "all",
+    "description": "all {action list}",
+    "body": [
+        "all [ $1 ]",
+    ]
+  },
+  "获取玩家的 IP 地址": {
+    "prefix": "address",
+    "description": "player address",
+    "body": [
+        "player address",
+    ]
+  },
+  "判断或修改玩家是否允许飞行": {
+    "prefix": "allow flight",
+    "description": "player allow flight [to {action}]",
+    "body": [
+        "player allow flight $1",
+    ]
+  },
+  "判断动作列表的所有返回值是否含有是。": {
+    "prefix": "any",
+    "description": "any {action list}",
+    "body": [
+        "any [ $1 ]",
+    ]
+  },
+  "将动作列表的所有返回值作为集合返回。": {
+    "prefix": "array",
+    "description": "array {action list}",
+    "body": [
+        "array [ $1 ]",
+    ]
+  },
+  "在不受生命周期控制的异步计划中执行动作。\n当程序运行结束后，所有未完成的 #Async 动作会被直接关闭。": {
+    "prefix": "async",
+    "description": "async {action}",
+    "body": [
+        "async { sleep 1s $1 } $2",
+    ]
+  },
+  "获取玩家的攻击冷却。": {
+    "prefix": "attack cooldown",
+    "description": "player attack cooldown",
+    "body": [
+        "player attack cooldown",
+    ]
+  },
+  "等待动作完成。": {
+    "prefix": "await",
+    "description": "await {action}",
+    "body": [
+        "await $1",
+    ]
+  },
+  "等待动作列表中的所有动作完成。": {
+    "prefix": "await all",
+    "description": "await_all {action list}",
+    "body": [
+        "await_all [ $1 sleep 1s ] $2",
+    ]
+  },
+  "等待动作列表中的任意动作完成。": {
+    "prefix": "await any",
+    "description": "await_any {action list}",
+    "body": [
+        "await_any [ $1 sleep 1s ] $2",
+    ]
+  },
+  "获取或修改玩家的出生点（床），需要对应方块材质为床。": {
+    "prefix": "Bed Spawn",
+    "description": "player bed spawn [to {action}]",
+    "body": [
+        "player bed spawn",
+    ]
+  },
+  "获取玩家出生点（床）的坐标轴。(x)": {
+    "prefix": "Bed Spawn x",
+    "description": "actionbar {action}",
+    "body": [
+        "player bed spawn x",
+    ]
+  },
+  "获取玩家出生点（床）的坐标轴。(y)": {
+    "prefix": "Bed Spawn y",
+    "description": "actionbar {action}",
+    "body": [
+        "player bed spawn y",
+    ]
+  },
+  "获取玩家出生点（床）的坐标轴。(z)": {
+    "prefix": "Bed Spawn z",
+    "description": "actionbar {action}",
+    "body": [
+        "player bed spawn z",
+    ]
+  },
+  "判断玩家是否在格挡状态。": {
+    "prefix": "Blocking",
+    "description": "player blocking",
+    "body": [
+        "player blocking",
+    ]
+  },
+  "该方法用于在特定循环语句 (ForEach, Join, Map, While) 中使用，结束循环体。": {
+    "prefix": "Break",
+    "description": "break",
+    "body": [
+        "break",
+    ]
+  },
+  "在 Shell 模式下该语句无任何意义。\n调用已声明的任何函数，包括 main 函数。": {
+    "prefix": "Call",
+    "description": "call {token}",
+    "body": [
+        "call $1",
+    ]
+  },
+  "完整的选择语句需要包含至少一项选择分支, 也就是 when block。\n每个标准的选择分支由 when {条件} -> {表达式} 组成。\n也可使用 else {表达} 作为默认分支。": {
+    "prefix": "case",
+    "description": "case {aciton} [ {when block} ... ]",
+    "body": [
+        "case &$1 [when $2 -> $3 when $4 -> $5 else $6 ]",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(==)": {
+    "prefix": "Check == (相等)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 == $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(is)": {
+    "prefix": "Check is (相等)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 is $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(!=)": {
+    "prefix": "Check != (不相等)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 != $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(not)": {
+    "prefix": "Check not (不相等)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 not $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(=!)": {
+    "prefix": "Check =! (相似等于)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 != $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(is?)": {
+    "prefix": "Check is? (相似等于)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 is? $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(>)": {
+    "prefix": "Check > (大于)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 > $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(gt)": {
+    "prefix": "Check gt (大于)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 gt $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(>=)": {
+    "prefix": "Check >= (大于等于)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 >= $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(<)": {
+    "prefix": "Check < (小于)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 < $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(lt)": {
+    "prefix": "Check lt (小于)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 lt $2 then $3 else $4",
+    ]
+  },
+  "将两个动作的返回值进行对比，支持多种判定方式。(<=)": {
+    "prefix": "Check <= (小于等于)",
+    "description": "check {action} {symbol} {action}",
+    "body": [
+        "check $1 <= $2 then $3 else $4",
+    ]
+  },
+  "将动作的返回值作为命令执行，默认以玩家为执行者。": {
+    "prefix": "Command",
+    "description": "command {action} [as (console|player|op)]",
+    "body": [
+        "command \"$1\"",
+    ]
+  },
+  "替换动作的返回值中所有颜色代码。\n支持由 TabooLib 提供的高级颜色代码。": {
+    "prefix": "ColorText",
+    "description": "color[ed] {action}",
+    "body": [
+        "color",
+    ]
+  },
+  "获取或修改玩家的指南针目标。": {
+    "prefix": "Compass Target",
+    "description": "player compass target [to {action}]",
+    "body": [
+        "player compass target",
+    ]
+  },
+  "获取玩家指南针目标的坐标轴。(x)": {
+    "prefix": "Compass X",
+    "description": "player compass (x|y|z)",
+    "body": [
+        "player compass x",
+    ]
+  },
+  "获取玩家指南针目标的坐标轴。(y)": {
+    "prefix": "Compass Y",
+    "description": "player compass (x|y|z)",
+    "body": [
+        "player compass y",
+    ]
+  },
+  "获取玩家指南针目标的坐标轴。(z)": {
+    "prefix": "Compass Z",
+    "description": "player compass (x|y|z)",
+    "body": [
+        "player compass z",
+    ]
+  },
+  "(用于查看可交谈对象的测试积极参与对话。返回：如果对话正在进行，则为 True)Tests to see of a Conversable object is actively engaged in a conversation.\nReturns:\nTrue if a conversation is in progress": {
+    "prefix": "Conversing",
+    "description": "player conversing",
+    "body": [
+        "player conversing",
+    ]
+  },
+  "本年、本月、本周中的天数。年：（1 ~ 365）": {
+    "prefix": "Date year (本年天数)",
+    "description": "day of (year|month|week)",
+    "body": [
+        "day in year",
+    ]
+  },
+  "本年、本月、本周中的天数。月：（1 ~ 31）": {
+    "prefix": "Date month (本月天数)",
+    "description": "day of (year|month|week)",
+    "body": [
+        "day in month",
+    ]
+  },
+  "本年、本月、本周中的天数。周：（1 ~ 7）": {
+    "prefix": "Date week (本周天数)",
+    "description": "day of (year|month|week)",
+    "body": [
+        "day in week",
+    ]
+  },
+  "当前小时（0 ~ 23）。": {
+    "prefix": "Date hour (当前小时)",
+    "description": "hour[s]",
+    "body": [
+        "hour",
+    ]
+  },
+  "当前分钟（0 ~ 59）。": {
+    "prefix": "Date minute (当前分钟)",
+    "description": "minute[s]",
+    "body": [
+        "minute",
+    ]
+  },
+  "当前月份（1 ~ 12）。": {
+    "prefix": "Date month (当前月)",
+    "description": "playerblocking",
+    "body": [
+        "month",
+    ]
+  },
+  "当前秒（0 ~ 59）。": {
+    "prefix": "Date second (当前秒)",
+    "description": "second[s]",
+    "body": [
+        "second",
+    ]
+  },
+  "当前年份（MIN_YEAR ~ MAX_YEAR）。": {
+    "prefix": "Date year (当前年)",
+    "description": "year[s]",
+    "body": [
+        "year",
+    ]
+  },
+  "判断玩家是否死亡。": {
+    "prefix": "dead",
+    "description": "player dead",
+    "body": [
+        "player dead",
+    ]
+  },
+  "将动作的返回值作为列表获取指定元素。": {
+    "prefix": "Element",
+    "description": "element {action} of {action}",
+    "body": [
+        "element $1 of $2",
+    ]
+  },
+  "获取或修改玩家的疲劳度。": {
+    "prefix": "Exhaustion",
+    "description": "player exhaustion [(add|to) {action}]",
+    "body": [
+        "player exhaustion",
+    ]
+  },
+  "退出程序。": {
+    "prefix": "Exit",
+    "description": "exit (success|pause|cooldown)",
+    "body": [
+        "exit success",
+    ]
+  },
+  "获取或修改玩家的经验相关数据，只有 player exp 允许修改。": {
+    "prefix": "Exp",
+    "description": "player exp [until next level|at level|to level] [(add|to) {action}]",
+    "body": [
+        "player exp",
+    ]
+  },
+  "返回玩家的首次游戏时间。": {
+    "prefix": "First Played",
+    "description": "player first played",
+    "body": [
+        "player first played",
+    ]
+  },
+  "获取或修改玩家的飞行速度。": {
+    "prefix": "SpeedFly(飞行)",
+    "description": "player fly speed [(add|to) {action}]",
+    "body": [
+        "player fly speed",
+    ]
+  },
+  "获取或修改玩家的移动速度。": {
+    "prefix": "Speedwalk(移动)",
+    "description": "player walk speed [(add|to) {action}]",
+    "body": [
+        "player walk speed",
+    ]
+  },
+  "判断或修改玩家是否在飞行状态。": {
+    "prefix": "Flying",
+    "description": "player flying [to {action}]",
+    "body": [
+        "player flying",
+    ]
+  },
+  "获取或修改玩家的饥饿值": {
+    "prefix": "Food Level",
+    "description": "player food level [(add|to) {action}]",
+    "body": [
+        "player food level",
+    ]
+  },
+  "遍历第一个动作的返回值中所有成员，并作为临时变量传入第二个动作。": {
+    "prefix": "ForEach",
+    "description": "for {token} in {action} then {action}",
+    "body": [
+        "for $1 in $2 then $3",
+    ]
+  },
+  "使用特定的方式格式化特定的时间。": {
+    "prefix": "Format Time",
+    "description": "format {action} (by|with) {token}",
+    "body": [
+        "format time with \"yyyy-MM-dd HH:mm\"",
+    ]
+  },
+  "获取或修改玩家的游戏模式。": {
+    "prefix": "GameMode",
+    "description": "可用模式：\t生存：SURVIVAL, 0\n创造：CREATIVE, 1\n冒险：ADVENTURE, 2\n观察：SPECTATOR, 3\nplayer gamemode [to {action}]",
+    "body": [
+        "player gamemode",
+    ]
+  },
+  "判断或修改玩家是否在滑翔状态。": {
+    "prefix": "Gliding",
+    "description": "player gliding [to {action}]",
+    "body": [
+        "player gliding",
+    ]
+  },
+  "判断或修改玩家是否在发光状态。": {
+    "prefix": "Glowing",
+    "description": "player glowing [to {action}]",
+    "body": [
+        "player glowing",
+    ]
+  },
+  "在 Shell 模式下该语句无任何意义。\n跳转到已声明的任何函数，包括 main 函数。": {
+    "prefix": "Goto",
+    "description": "goto {token}",
+    "body": [
+        "goto ",
+    ]
+  },
+  "判断或修改玩家是否拥有重力。": {
+    "prefix": "Gravity",
+    "description": "player gravity [(add|to) {action}]",
+    "body": [
+        "player gravity",
+    ]
+  },
+  "获取或修改玩家的生命。": {
+    "prefix": "Health",
+    "description": "player [ max ]health [(add|to) {action}]",
+    "body": [
+        "player health",
+    ]
+  },
+  "获取或修改玩家的最大生命。": {
+    "prefix": "MaxHealth",
+    "description": "player maxhealth [(add|to) {action}]",
+    "body": [
+        "player maxhealth",
+    ]
+  },
+  "当一个动作的返回值为是时，执行第二个动作，反之执行第三个动作。": {
+    "prefix": "If & Else",
+    "description": "If {action} then {action} [else {action}]",
+    "body": [
+        "if $1 then $2 else $3",
+    ]
+  },
+  "替换动作的返回值中所有内联脚本。内联脚本指在字符串中使用 {{ ... }} 插入脚本代码。": {
+    "prefix": "Inline",
+    "description": "inline {action} | function {action}",
+    "body": [
+        "inline",
+    ]
+  },
+  "判断玩家是否在载具中。": {
+    "prefix": "Inside Vehicle",
+    "description": "player inside vehicle",
+    "body": [
+        "player inside vehicle",
+    ]
+  },
+  "运行 JavaScript 代码，并返回结果。": {
+    "prefix": "JavaScript",
+    "description": "并传入当前程序的所有变量，以及事件 (event)、执行者 (sender)、服务器 (server)。",
+    "body": [
+        "javascript ",
+    ]
+  },
+  "将动作列表的所有返回值合并为字符串返回，默认使用空格作为分隔。": {
+    "prefix": "Join",
+    "description": "join {action list} [by {token}]",
+    "body": [
+        "join [ $1 ]",
+    ]
+  },
+  "判断或修改玩家是否在跳跃状态。  ": {
+    "prefix": "Jumping",
+    "description": "player jumping [to {action}]",
+    "body": [
+        "player jumping",
+    ]
+  },
+  "返回玩家的最后游戏、登陆时间": {
+    "prefix": "Last Played",
+    "description": "player last (played|login)",
+    "body": [
+        "player last login",
+    ]
+  },
+  "(返回实体当前是否被束缚。)Returns whether the entity is currently leashed.": {
+    "prefix": "Leashed",
+    "description": "player leashed",
+    "body": [
+        "player leashed",
+    ]
+  },
+  "获取或修改玩家的等级。": {
+    "prefix": "Level",
+    "description": "player level [(add|to) {action}]",
+    "body": [
+        "player level",
+    ]
+  },
+  "创建并返回一个字符串。当字符串中存在空格时需将内容写在双引号或单引号中，若内容中不含空格则允许省略引号": {
+    "prefix": "Literal",
+    "description": "注意：即使是 literal 100 也并非整数类型，如有需要请使用 #Type 动作。literal {token} | {token}",
+    "body": [
+        "",
+    ]
+  },
+  "获取玩家的客户端语言。": {
+    "prefix": "Locale",
+    "description": "player locale",
+    "body": [
+        "player locale",
+    ]
+  },
+  "构建一个坐标": {
+    "prefix": "Location",
+    "description": "location {action} {action} {action} {action} [and {action} {action}]",
+    "body": [
+        "location world 0 0 0",
+    ]
+  },
+  "获取或修改玩家的角度。": {
+    "prefix": "Location Angle",
+    "description": "player (yaw|pitch) [(add|to) {action}]",
+    "body": [
+        "player yaw",
+    ]
+  },
+  "(X)获取玩家的坐标轴。使用 block 则返回整数（方块）坐标。": {
+    "prefix": "Location X",
+    "description": "player [block ](x|y|z)",
+    "body": [
+        "player x",
+    ]
+  },
+  "(Y)获取玩家的坐标轴。使用 block 则返回整数（方块）坐标。": {
+    "prefix": "Location Y",
+    "description": "player [ block ](x|y|z)",
+    "body": [
+        "player y",
+    ]
+  },
+  "(Z)获取玩家的坐标轴。使用 block 则返回整数（方块）坐标。": {
+    "prefix": "Location Z",
+    "description": "player [block ](x|y|z)",
+    "body": [
+        "player z",
+    ]
+  },
+  "(X)获取玩家的坐标轴返回整数（方块）坐标。": {
+    "prefix": "LocationBlock X",
+    "description": "player block (x|y|z)",
+    "body": [
+        "player block x",
+    ]
+  },
+  "(Y)获取玩家的坐标轴返回整数（方块）坐标。": {
+    "prefix": "LocationBlock Y",
+    "description": "player block (x|y|z)",
+    "body": [
+        "player block y",
+    ]
+  },
+  "(Z)获取玩家的坐标轴返回整数（方块）坐标。": {
+    "prefix": "LocationBlock Z",
+    "description": "player block (x|y|z)",
+    "body": [
+        "player block z",
+    ]
+  },
+  "遍历第一个动作的返回值中所有成员，并作为临时变量传入第二个动作。最终将所有第二个动作的返回值作为集合返回。与 #ForEach 动作不同的是，#Map 则会整理每一次非空的处理结果。": {
+    "prefix": "Map",
+    "description": "map {token} in {action} with {action}",
+    "body": [
+        "map $1 in $2 with $3",
+    ]
+  },
+  "使用数学运算符处理动作列表的所有返回值。(加)": {
+    "prefix": "Math(加)",
+    "description": "math {symbol} {action list}",
+    "body": [
+        "math add [ $1 ]",
+    ]
+  },
+  "使用数学运算符处理动作列表的所有返回值。(减)": {
+    "prefix": "Math(减)",
+    "description": "math {symbol} {action list}",
+    "body": [
+        "math sub [ $1 ]",
+    ]
+  },
+  "使用数学运算符处理动作列表的所有返回值。(乘)": {
+    "prefix": "Math(乘)",
+    "description": "math {symbol} {action list}",
+    "body": [
+        "math mul [ $1 ]",
+    ]
+  },
+  "使用数学运算符处理动作列表的所有返回值。(除)": {
+    "prefix": "Math(除)",
+    "description": "math {symbol} {action list}",
+    "body": [
+        "math div [ $1 ]",
+    ]
+  },
+  "获取玩家的列表名称。": {
+    "prefix": "NameList",
+    "description": "player [(display|list) ] name",
+    "body": [
+        "player list name",
+    ]
+  },
+  "获取玩家的展示名称。": {
+    "prefix": "NameDisplay",
+    "description": "player [(display|list) ] name",
+    "body": [
+        "player display name",
+    ]
+  },
+  "获取玩家的游戏名称": {
+    "prefix": "name",
+    "description": "player [(display|list) ] name",
+    "body": [
+        "player name",
+    ]
+  },
+  "获取或修改玩家的无敌时间。": {
+    "prefix": "No Damage Ticks",
+    "description": "player no damage ticks [(add|to) {action}]",
+    "body": [
+        "player no damage ticks",
+    ]
+  },
+  "判断动作的返回值是否为否，即否定动作的结果。": {
+    "prefix": "Not",
+    "description": "not {action}",
+    "body": [
+        "not $1",
+    ]
+  },
+  "返回一个空值。": {
+    "prefix": "Null",
+    "description": "null",
+    "body": [
+        "null",
+    ]
+  },
+  "判断玩家是否在地面上，该数据由客户端返回，可能会被篡改。": {
+    "prefix": "On Ground",
+    "description": "player on ground",
+    "body": [
+        "player on ground",
+    ]
+  },
+  "判断或修改玩家是否为 OP 权限。": {
+    "prefix": "Op",
+    "description": "player op [to {action}]",
+    "body": [
+        "player op",
+    ]
+  },
+  "对动作的返回值进行非空判断。": {
+    "prefix": "Optional",
+    "description": "optional {action} else {action}",
+    "body": [
+        "optional $1 else $2",
+    ]
+  },
+  "返回一个空字符串。": {
+    "prefix": "Pass",
+    "description": "pass",
+    "body": [
+        "pass",
+    ]
+  },
+  "使程序的生命周期强制暂停，该操作不可被撤销，直到程序关闭。": {
+    "prefix": "Pause",
+    "description": "pause",
+    "body": [
+        "pause",
+    ]
+  },
+  "将动作的返回值作为权限判断执行者是否持有该权限。": {
+    "prefix": "Permission",
+    "description": "perm[ission] {action}",
+    "body": [
+        "perm $1",
+    ]
+  },
+  "替换动作的返回值中所有 PlaceholderAPI 变量。": {
+    "prefix": "PlaceholderAPI",
+    "description": "papi {action} | placeholder {action}",
+    "body": [
+        "papi \"%$1%\"",
+    ]
+  },
+  "将动作的返回值作为信息发送给控制台。": {
+    "prefix": "Print",
+    "description": "print {action} | log {action}",
+    "body": [
+        "print \"$1\"",
+    ]
+  },
+  "在一定的范围内随机返回一个浮点数或整数，相比于 #random，这个范围由动作的返回值表示。": {
+    "prefix": "Random2",
+    "description": "random2 {MIN} to {MAX}",
+    "body": [
+        "random2 $1 to $2",
+    ]
+  },
+  "(A to B)在一定的范围内随机返回一个浮点数，或从动作的返回值中随机返回一个成员。在定义范围时可以省略第二个参数来选定 0 ~ 范围。": {
+    "prefix": "Random",
+    "description": "random {double} [to {double}] | random {action}",
+    "body": [
+        "random $1 to $2",
+    ]
+  },
+  "([ 1 2 3 ])在一定的范围内随机返回一个浮点数，或从动作的返回值中随机返回一个成员。在定义范围时可以省略第二个参数来选定 0 ~ 范围。": {
+    "prefix": "Random",
+    "description": "random {double} [to {double}] | random {action}",
+    "body": [
+        "random [ $1 ]",
+    ]
+  },
+  "创建一组数字集合，当你省略步长或使用整型作为步长时，则创建的是整型集合，反之创建浮点数集合。集合的类型取决于步长的类型，而不是范围数字类型。": {
+    "prefix": "Range",
+    "description": "plarange {number} to {number} [step {number}]",
+    "body": [
+        "range $1 to $2",
+    ]
+  },
+  "获取或修改玩家的氧气。": {
+    "prefix": "Remaining Air",
+    "description": "player remaining air [(add|to) {action}]",
+    "body": [
+        "player remaining air",
+    ]
+  },
+  "重复一个动作数次。": {
+    "prefix": "Repeat",
+    "description": "repeat {int} {action}",
+    "body": [
+        "repeat $1 $2",
+    ]
+  },
+  "判断玩家是否在激流（三叉戟）状态。": {
+    "prefix": "Riptiding",
+    "description": "player riptiding",
+    "body": [
+        "player riptiding",
+    ]
+  },
+  "将动作的返回值作为浮点数并四舍五入为最接近的整数。": {
+    "prefix": "Round",
+    "description": "round {action}",
+    "body": [
+        "round $1",
+    ]
+  },
+  "获取或修改玩家的饱食度。": {
+    "prefix": "Saturation",
+    "description": "player saturation [(add|to) {action}]",
+    "body": [
+        "player saturation",
+    ]
+  },
+  "将动作的返回值作为浮点数并保留小数点后两位。": {
+    "prefix": "Scaled",
+    "description": "scale[d] {action}",
+    "body": [
+        "scale $1",
+    ]
+  },
+  "将动作的返回值作为列表获取其长度。": {
+    "prefix": "Size",
+    "description": "size {action}",
+    "body": [
+        "size range $1 to $2",
+    ]
+  },
+  "堵塞工作线程特定时间段。": {
+    "prefix": "Sleep",
+    "description": "(sleep|delay|wait) {duration}",
+    "body": [
+        "sleep $1",
+    ]
+  },
+  "返回玩家是否处于睡眠状态。设置是否忽略玩家作为不睡眠。如果每个人都在睡觉或设置了这个标志，那么时间将提前到第二天。如果每个人都设置了这个旗帜，但实际上没有人在床上，那么什么都不会发生。": {
+    "prefix": "Sleep Ignored",
+    "description": "player sleep ignored [to {action}]",
+    "body": [
+        "player sleep ignored",
+    ]
+  },
+  "返回玩家的睡眠时间。": {
+    "prefix": "Sleep Ticks",
+    "description": "player sleep ticks",
+    "body": [
+        "player sleep ticks",
+    ]
+  },
+  "判断玩家是否在潜行状态。": {
+    "prefix": "Sneaking",
+    "description": "player sneaking",
+    "body": [
+        "player sneaking",
+    ]
+  },
+  "将文本作为音效播放，默认音量与音调均为 1.0。使用 \"resource:\" 作为前缀则播放资源包中的音效。": {
+    "prefix": "Sound",
+    "description": "sound {token} [by {double} {double}]",
+    "body": [
+        "sound $1",
+    ]
+  },
+  "对动作的返回值作为字符串切片并返回。": {
+    "prefix": "Split",
+    "description": "split {action} [with {token}]",
+    "body": [
+        "split \"$1\" with \"$1\"",
+    ]
+  },
+  "判断玩家是否在疾跑状态。": {
+    "prefix": "Sprinting",
+    "description": "player sprinting",
+    "body": [
+        "player sprinting",
+    ]
+  },
+  "将动作的返回值作为副标题信息发送给执行者，默认的淡入淡出、停留、时间为0、20、0。": {
+    "prefix": "Subtitle",
+    "description": "subtitle {action} [by {int} {int} {int}]",
+    "body": [
+        "subtitle \"$1\" by ${2:0} ${3:20} ${4:0}",
+    ]
+  },
+  "判断或修改玩家是否在游泳状态。": {
+    "prefix": "Swimming",
+    "description": "player swimming [(add|to) {action}]",
+    "body": [
+        "player swimming",
+    ]
+  },
+  "切换当前观察者到特定玩家。": {
+    "prefix": "Switch",
+    "description": "switch {action}",
+    "body": [
+        "switch $1",
+    ]
+  },
+  "将动作的返回值作为信息发送给执行者。": {
+    "prefix": "Tell",
+    "description": "tell {action} | send {action} | message {action}",
+    "body": [
+        "tell \"$1\"",
+    ]
+  },
+  "使用特定的方式格式化当前系统时间。": {
+    "prefix": "Time Format",
+    "description": "time as {token} | date as {token}",
+    "body": [
+        "date as \"yyyy-MM-dd HH:mm:ss\"",
+    ]
+  },
+  "将动作的返回值作为标题信息发送给执行者，默认的淡入淡出、停留、时间为0、20、0。": {
+    "prefix": "Title",
+    "description": "title {action} [subtitle {action}] [by {int} {int} {int}]",
+    "body": [
+        "title \"$1\"",
+    ]
+  },
+  "将动作的返回值作为成就信息发送给执行者。支持列表作为动作的返回值。(※需要服务端版本高于 1.13)": {
+    "prefix": "Toast",
+    "description": "toast {material} {action} [(by|with) (task|goal|challenge)]",
+    "body": [
+        "toast $1 \"$2\" by ${3:challenge}",
+    ]
+  },
+  "创建并返回一个最接近的字符串、整型、长整型、浮点数 或 布尔值。当字符串中存在空格时需将内容写在双引号或单引号中，若内容中不含空格则允许省略引号。或使用指定类型进行格式化（以动作作为参数）：int, long, float, double, boolean": {
+    "prefix": "Type",
+    "description": "type {token} | type {type} {action}",
+    "body": [
+        "type $1",
+    ]
+  },
+  "获取变量。": {
+    "prefix": "get",
+    "description": "get {token}",
+    "body": [
+        "get $1",
+    ]
+  },
+  "获取变量。(&)": {
+    "prefix": "&",
+    "description": "&{token}",
+    "body": [
+        "&$1",
+    ]
+  },
+  "将变量设置为基本类型或一个动作的返回值。": {
+    "prefix": "Set",
+    "description": "set {token} {token}",
+    "body": [
+        "set $1 $2",
+    ]
+  },
+  "将变量设置为基本类型或一个动作的返回值": {
+    "prefix": "Set",
+    "description": "set {token} to {action}",
+    "body": [
+        "set $1 to $2",
+    ]
+  },
+  "将所有变量的节点合并字符串列表返回。": {
+    "prefix": "Variables",
+    "description": "vars | variables",
+    "body": [
+        "vars",
+    ]
+  },
+  "将动作的返回值作为警告发送给控制台。": {
+    "prefix": "Warning",
+    "description": "warn[ing] {action}",
+    "body": [
+        "warning \"$1\"",
+    ]
+  },
+  "当一个动作的返回值为是时，重复第二个动作直到第一个动作的的返回值为否。": {
+    "prefix": "While",
+    "description": "while {action} then {action}",
+    "body": [
+        "while $1 then $2",
+    ]
+  },
+  "判断或修改玩家是否在白名单中。": {
+    "prefix": "Whitelist",
+    "description": "player whitelist [to {action}]",
+    "body": [
+        "player whitelist",
+    ]
+  },
+  "获取玩家的当前所在世界名称。": {
+    "prefix": "World",
+    "description": "player world",
+    "body": [
+        "player world",
+    ]
+  },
+  "改变为真": {
+    "prefix": "to true",
+    "body": [
+        "to true",
+    ]
+  },
+  "改变为假": {
+    "prefix": "to false",
+    "description": "to false",
+    "body": [
+        "to false",
+    ]
+  },
+  "作为控制台": {
+    "prefix": "as console",
+    "description": "as (console|player|op)",
+    "body": [
+        "as console",
+    ]
+  },
+  "作为玩家": {
+    "prefix": "as player",
+    "description": "as (console|player|op)",
+    "body": [
+        "as player",
+    ]
+  },
+  "作为OP": {
+    "prefix": "as op",
+    "description": "as (console|player|op)",
+    "body": [
+        "as op",
+    ]
+  },
+
+
+}
