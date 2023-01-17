@@ -1,9 +1,11 @@
 {
   "name": "kether-snippet",
-  "displayName": "Kether-snippet",
-  "description": "Kether动作补全",
+  "displayName": "Kether支持",
+  "description": "Kether动作补全以及支持KetherScript",
+  "keywords": ["kether", "ks", "questengine","TabooLib"],
   "publisher": "LiteCat",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.73.0"
   },
@@ -12,7 +14,8 @@
     "url" : "https://github.com/LiteCat0905/Kether-snippet.git"
   },
   "categories": [
-    "Snippets"
+    "Snippets",
+    "Programming Languages"
   ],
   "contributes": {
     "snippets": [
@@ -21,9 +24,28 @@
         "path": "./snippets/TabooLib公有动作.code-snippets"
       },
       {
+        "language": "ketherscript",
+        "path": "./snippets/TabooLib公有动作.code-snippets"
+      },
+      {
         "language": "yaml",
         "path": "./snippets/questengine私有动作.code-snippets"
+      },
+      {
+        "language": "ketherscript",
+        "path": "./snippets/questengine私有动作.code-snippets"
       }
-    ]
+    ],
+    "languages": [{
+      "id": "ketherscript",
+      "aliases": ["Kether Script", "ketherscript"],
+      "extensions": [".ks"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "ketherscript",
+      "scopeName": "source.ks",
+      "path": "./syntaxes/ketherscript.tmLanguage.json"
+    }]
   }
 }
