@@ -1,6 +1,9 @@
 ### ⚠ 注意:使用前请安装YAML扩展！否则无法提示
 >名称: YAML | ID: redhat.vscode-yam | 发布者: Red Hat | VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
 
+## 下载
+[VSCode商店下载](https://marketplace.visualstudio.com/items?itemName=LiteCat.kether-snippet)
+
 ### 官方文档：https://kether.tabooproject.org/list.html
 ![IMG](https://kether.tabooproject.org/assets/img/68747470733a2f2f77696b692e70746d732e696e6b2f696d616765732f362f36392f5461626f6f6c69622d706e672d626c75652d76322e706e67.png)
 ---
