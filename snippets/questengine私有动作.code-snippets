@@ -1,0 +1,393 @@
+{
+    "(小时)延迟运行时间,等待时间后运行下一个语句": {
+        "prefix": [
+            "waitTime 小时",
+        ],
+        "description": "(QE私人动作)waitTime [数字][时间单位]",
+        "body": [
+            "waitTime $1h",
+        ]
+    },
+    "(分钟)延迟运行时间,等待时间后运行下一个语句": {
+        "prefix": [
+            "waitTime 分钟",
+        ],
+        "description": "(QE私人动作)waitTime [数字][时间单位]",
+        "body": [
+            "waitTime $1m",
+        ]
+    },
+    "(秒)延迟运行时间,等待时间后运行下一个语句": {
+        "prefix": [
+            "waitTime 秒",
+        ],
+        "description": "(QE私人动作)waitTime [数字][时间单位]",
+        "body": [
+            "waitTime $1s",
+        ]
+    },
+    "添加标签": {
+        "prefix": [
+            "tags add",
+        ],
+        "description": "(QE私人动作)tags add [标签]",
+        "body": [
+            "tags add ",
+        ]
+    },
+    "删除标签": {
+        "prefix": [
+            "tags remove",
+        ],
+        "description": "(QE私人动作)tags remove [标签]",
+        "body": [
+            "tags remove ",
+        ]
+    },
+    "是否有某标签": {
+        "prefix": [
+            "tags has",
+        ],
+        "description": "(QE私人动作)tags has [标签]",
+        "body": [
+            "tags has ",
+        ]
+    },
+    "获得数据": {
+        "prefix": [
+            "storage get",
+        ],
+        "description": "(QE私人动作)storage [id] get",
+        "body": [
+            "storage $1 get",
+        ]
+    },
+    "设置数据": {
+        "prefix": [
+            "storage set",
+        ],
+        "description": "(QE私人动作)storage [id] set [action]",
+        "body": [
+            "storage $1 set $2",
+        ]
+    },
+    "删除数据": {
+        "prefix": [
+            "storage remove",
+        ],
+        "description": "(QE私人动作)storage [id] remove",
+        "body": [
+            "storage $1 remove",
+        ]
+    },
+    "选择任务": {
+        "prefix": [
+            "quest select",
+        ],
+        "description": "(QE私人动作)quest select [任务编号]",
+        "body": [
+            "quest select $1",
+        ]
+    },
+    "接受任务": {
+        "prefix": [
+            "quest accept",
+        ],
+        "description": "(QE私人动作)quest accept",
+        "body": [
+            "quest select $1 quest accept",
+        ]
+    },
+    "放弃任务": {
+        "prefix": [
+            "quest quit",
+        ],
+        "description": "(QE私人动作)quest quit",
+        "body": [
+            "quest select $1 quest quit",
+        ]
+    },
+    "完成任务": {
+        "prefix": [
+            "quest finish",
+        ],
+        "description": "(QE私人动作)quest finish",
+        "body": [
+            "quest select $1 quest finish",
+        ]
+    },
+    "获取任务名称": {
+        "prefix": [
+            "quest name",
+        ],
+        "description": "(QE私人动作)quest name",
+        "body": [
+            "quest select $1 quest name",
+        ]
+    },
+    "获取任务状,返回枚举(DOING)": {
+        "prefix": [
+            "quest state",
+        ],
+        "description": "(QE私人动作)quest state",
+        "body": [
+            "quest select $1 quest state",
+        ]
+    },
+    "获取任务状,返回语言内容(正在进行中)": {
+        "prefix": [
+            "quest state lang",
+        ],
+        "description": "(QE私人动作)quest state lang",
+        "body": [
+            "quest select $1 quest state lang",
+        ]
+    },
+    "获取任务剩余时间": {
+        "prefix": [
+            "quest limitTime",
+        ],
+        "description": "(QE私人动作)quest limitTime",
+        "body": [
+            "quest select $1 quest limitTime",
+        ]
+    },
+    "选择目标": {
+        "prefix": [
+            "target select",
+        ],
+        "description": "(QE私人动作)target select [目标编号]",
+        "body": [
+            "quest select $1 target select $2",
+        ]
+    },
+    "获取目标进度": {
+        "prefix": [
+            "target schedule",
+        ],
+        "description": "(QE私人动作)target schedule",
+        "body": [
+            "quest select $1 target select $2 target schedule",
+        ]
+    },
+    "获取目标状态, 返回枚举": {
+        "prefix": [
+            "target state",
+        ],
+        "description": "(QE私人动作)target state",
+        "body": [
+            "quest select $1 target select $2 target state",
+        ]
+    },
+    "获取目标状态, 返回语言内容": {
+        "prefix": [
+            "target state lang",
+        ],
+        "description": "(QE私人动作)target state lang",
+        "body": [
+            "quest select $1 target select $2 target state lang",
+        ]
+    },
+    "选择对话": {
+        "prefix": [
+            "dialog select",
+        ],
+        "description": "(QE私人动作)dialog select [对话编号]",
+        "body": [
+            "dialog select $1",
+        ]
+    },
+    "发送对话": {
+        "prefix": [
+            "dialog send",
+        ],
+        "description": "(QE私人动作)dialog send",
+        "body": [
+            "dialog select $1 dialog send",
+        ]
+    },
+    "发送对话(位置)": {
+        "prefix": [
+            "dialog send where",
+        ],
+        "description": "(QE私人动作)dialog send where [location]",
+        "body": [
+            "dialog select $1 dialog send where ${2:world} ${3:0} ${4:0} ${5:0}",
+        ]
+    },
+    "检查玩家是否有特定物品": {
+        "prefix": [
+            "itemCheck inv",
+        ],
+        "description": "(QE私人动作)itemCheck inv [类型] \"选择 内容\"",
+        "body": [
+            "itemCheck inv ${1|all, mainHand|} \"${2|MINECRAFT -material displayName- \"\" -loreContains -customModelData -amount,MMOITEMS -id|}\"",
+        ]
+    },
+    "检查玩家是否有特定物品并拿走": {
+        "prefix": [
+            "itemCheck take",
+        ],
+        "description": "(QE私人动作)itemCheck take \"选择 内容\"",
+        "body": [
+            "itemCheck take \"${2|MINECRAFT -material displayName- \"\" -loreContains -customModelData -amount,MMOITEMS -id|}\"",
+        ]
+    },
+    "对话空间范围,应用于对话模块空间范围 dialogID.space.condition": {
+        "prefix": [
+            "spaceRange",
+        ],
+        "description": "(QE私人动作)spaceRange [长] [高] [宽]n",
+        "body": [
+            "spaceRange ${1:长} ${2:高} ${3:宽}",
+        ]
+    },
+    "空间范围,应用于条件检查，比如任务要求达到目的地": {
+        "prefix": [
+            "spaceRange where",
+        ],
+        "description": "(QE私人动作)spaceRange [长] [高] [宽] where [location]",
+        "body": [
+            "spaceRange ${1:长} ${2:高} ${3:宽} where ${4:world} ${5:0} ${6:0} ${7:0}",
+        ]
+    },
+    "开动态门": {
+        "prefix": [
+            "doors open",
+        ],
+        "description": "(QE私人动作)doors to [ID] open",
+        "body": [
+            "doors to $1 open",
+        ]
+    },
+    "关动态门": {
+        "prefix": [
+            "doors close",
+        ],
+        "description": "(QE私人动作)doors to [ID] close",
+        "body": [
+            "doors to $1 close",
+        ]
+    },
+    "情景放映": {
+        "prefix": [
+            "tutorial start",
+        ],
+        "description": "(QE私人动作)tutorial start [id]",
+        "body": [
+            "tutorial start $1",
+        ]
+     },
+    "选择导航": {
+        "prefix": [
+            "nav select",
+        ],
+        "description": "(QE私人动作)nav select [导航编号]",
+        "body": [
+            "nav select $1",
+        ]
+    },
+    "为玩家创建导航": {
+        "prefix": [
+            "nav create",
+        ],
+        "description": "(QE私人动作)nav create target [location]",
+        "body": [
+            "nav create target location ${1:world} ${2:0} ${3:0} ${4:0}",
+        ]
+    },
+    "播放导航(绿色粒子)": {
+        "prefix": [
+            "nav set start",
+        ],
+        "description": "(QE私人动作)nav set start",
+        "body": [
+            "nav select $1 nav set start",
+        ]
+    },
+    "播放导航(指定粒子)": {
+        "prefix": [
+            "nav set start display",
+        ],
+        "description": "(QE私人动作)nav set start display [粒子类型]",
+        "body": [
+            "nav select $1 nav set start display $1",
+        ]
+    },
+    // nav select gotortchillback
+    //     nav create target location world 236 74 222
+    //     nav set start display TOTEM
+    //     nav set stop
+    "停止导航": {
+        "prefix": [
+            "nav set stop",
+        ],
+        "description": "(QE私人动作)nav set stop",
+        "body": [
+            "nav select $1 nav set stop",
+        ]
+    },
+    "清除导航数据": {
+        "prefix": [
+            "nav set clear",
+        ],
+        "description": "(QE私人动作)nav set clear",
+        "body": [
+            "nav select $1 nav set clear",
+        ]
+    },
+    "隐藏或显示玩家": {
+        "prefix": [
+            "hide player set",
+        ],
+        "description": "(QE私人动作)hide player set [true或false]",
+        "body": [
+            "hide player set ${1|true,false|}",
+        ]
+    },
+    "WorldGuard判断位置是否在该区域": {
+        "prefix": [
+            "worldguard",
+        ],
+        "description": "(QE私人动作)worldguard [location] id [区域ID]",
+        "body": [
+            "worldguard ${1:world} ${2:0} ${3:0} ${4:0} id $5",
+        ]
+    },
+    "给玩家附加药水效果": {
+        "prefix": [
+            "actionEffect select",
+        ],
+        "description": "(QE私人动作)actionEffect select [药水] time [时间，20等于1秒]",
+        "body": [
+            "actionEffect select ${1:药水|} time ${2:时间，20等于1秒|}",
+        ]
+    },
+    "创建光照": {
+        "prefix": [
+            "light create",
+        ],
+        "description": "(QE私人动作)light create level [光照等级] where [location]",
+        "body": [
+            "light create level ${1:光照等级} where ${2:world} ${3:0} ${4:0} ${5:0}",
+        ]
+    },
+    "删除光照": {
+        "prefix": [
+            "light delete",
+        ],
+        "description": "(QE私人动作)light delete where [location]",
+        "body": [
+            "light delete where ${1:world} ${2:0} ${3:0} ${4:0}",
+        ]
+    },
+    "传送玩家": {
+        "prefix": [
+            "player location to",
+        ],
+        "description": "(QE私人动作)player location to [location]",
+        "body": [
+            "player location to ${1:world} ${2:0} ${3:0} ${4:0}",
+        ]
+    },
+}
