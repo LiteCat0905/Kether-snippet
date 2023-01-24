@@ -1,32 +1,2623 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Kether Script",
+	"scopeName": "source.ks",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"captures": {
+				"1": {
+					"name": "keyword.control.class.ketherscript"
+				},
+				"2": {
+					"name": "entity.name.type.class.ketherscript"
+				},
+				"4": {
+					"name": "entity.other.inherited-class.ketherscript"
+				},
+				"5": {
+					"name": "punctuation.separator.inheritance.ketherscript"
+				},
+				"6": {
+					"name": "variable.other.object.ketherscript"
+				},
+				"7": {
+					"name": "punctuation.definition.variable.ketherscript"
+				}
+			},
+			"match": "(?x)\n^\\s*(class)\\s+\n(\n  (\n    [.a-zA-Z0-9_:]+\n    (\\s*(<)\\s*[.a-zA-Z0-9_:]+)?   # class A < B\n  )\n  |\n  ((<<)\\s*[.a-zA-Z0-9_:]+)         # class << C\n)",
+			"name": "meta.class.ketherscript"
 		},
 		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.ketherscript",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
+			"captures": {
+				"1": {
+					"name": "keyword.control.module.ketherscript"
+				},
+				"2": {
+					"name": "entity.name.type.module.ketherscript"
+				},
+				"3": {
+					"name": "entity.other.inherited-class.module.first.ketherscript"
+				},
+				"4": {
+					"name": "punctuation.separator.inheritance.ketherscript"
+				},
+				"5": {
+					"name": "entity.other.inherited-class.module.second.ketherscript"
+				},
+				"6": {
+					"name": "punctuation.separator.inheritance.ketherscript"
+				},
+				"7": {
+					"name": "entity.other.inherited-class.module.third.ketherscript"
+				},
+				"8": {
+					"name": "punctuation.separator.inheritance.ketherscript"
+				}
+			},
+			"match": "(?x)\n^\\s*(module)\\s+\n(\n  ([A-Z]\\w*(::))?\n  ([A-Z]\\w*(::))?\n  ([A-Z]\\w*(::))*\n  [A-Z]\\w*\n)",
+			"name": "meta.module.ketherscript"
 		},
-		"strings": {
-			"name": "string.quoted.double.ketherscript",
-			"begin": "\"",
-			"end": "\"",
+		{
+			"comment": "else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.",
+			"match": "(?<!\\.)\\belse(\\s)+if\\b",
+			"name": "invalid.deprecated.ketherscript"
+		},
+		{
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.constant.hashkey.ketherscript"
+				}
+			},
+			"comment": "symbols as hash key (1.9 syntax)",
+			"match": "(?>[a-zA-Z_]\\w*(?>[?!])?)(:)(?!:)",
+			"name": "constant.language.symbol.hashkey.ketherscript"
+		},
+		{
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.constant.ketherscript"
+				}
+			},
+			"comment": "symbols as hash key (1.8 syntax)",
+			"match": "(?<!:)(:)(?>[a-zA-Z_]\\w*(?>[?!])?)(?=\\s*=>)",
+			"name": "constant.language.symbol.hashkey.ketherscript"
+		},
+		{
+			"comment": "everything being a reserved word, not a value and needing a 'end' is a..",
+			"match": "(?<!\\.)\\b(BEGIN|begin|case|when|class|else|optional|elsif|END|end|ensure|for|if|in|module|rescue|then|unless|until|when|while)\\b(?![?!])",
+			"name": "keyword.control.ketherscript"
+		},
+		{
+			"comment": "contextual smart pair support for block parameters",
+			"match": "(?<!\\.)\\bdo\\b",
+			"name": "keyword.control.start-block.ketherscript"
+		},
+		{
+			"comment": "contextual smart pair support",
+			"match": "(?<={)(\\s+)",
+			"name": "meta.syntax.ketherscript.start-block"
+		},
+		{
+			"match": "(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield)\\b(?![?!])|\\bdefined\\?|\\b(block_given|iterator)\\?",
+			"name": "keyword.control.pseudo-method.ketherscript"
+		},
+		{
+			"match": "\\bnil\\b(?![?!])",
+			"name": "constant.language.nil.ketherscript"
+		},
+		{
+			"match": "\\b(true|false)\\b(?![?!])",
+			"name": "constant.language.boolean.ketherscript"
+		},
+		{
+			"match": "\\b(__(FILE|LINE)__)\\b(?![?!])",
+			"name": "variable.language.ketherscript"
+		},
+		{
+			"match": "\\bself\\b(?![?!])",
+			"name": "variable.language.self.ketherscript"
+		},
+		{
+			"comment": " everything being a method but having a special function is a..",
+			"match": "\\b(initialize|new|loop|include|extend|prepend|raise|fail|attr_reader|attr_writer|attr_accessor|attr|catch|throw|private|private_class_method|module_function|public|public_class_method|protected|refine|using)\\b(?![?!])",
+			"name": "keyword.other.special-method.ketherscript"
+		},
+		{
+			"begin": "\\b(?<!\\.|::)(require|require_relative)\\b(?![?!])",
+			"captures": {
+				"1": {
+					"name": "keyword.other.special-method.ketherscript"
+				}
+			},
+			"end": "$|(?=#|})",
+			"name": "meta.require.ketherscript",
 			"patterns": [
 				{
-					"name": "constant.character.escape.ketherscript",
+					"include": "$self"
+				}
+			]
+		},
+		{
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.variable.ketherscript"
+				}
+			},
+			"match": "(@)[a-zA-Z_]\\w*",
+			"name": "variable.other.readwrite.instance.ketherscript"
+		},
+		{
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.variable.ketherscript"
+				}
+			},
+			"match": "(@@)[a-zA-Z_]\\w*",
+			"name": "variable.other.readwrite.class.ketherscript"
+		},
+		{
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.variable.ketherscript"
+				}
+			},
+			"match": "(\\$)[a-zA-Z_]\\w*",
+			"name": "variable.other.readwrite.global.ketherscript"
+		},
+		{
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.variable.ketherscript"
+				}
+			},
+			"match": "(\\$)(!|@|&|`|'|\\+|\\d+|~|=|/|\\\\|,|;|\\.|<|>|_|\\*|\\$|\\?|:|\"|-[0adFiIlpv])",
+			"name": "variable.other.readwrite.global.pre-defined.ketherscript"
+		},
+		{
+			"begin": "\\b(ENV)\\[",
+			"beginCaptures": {
+				"1": {
+					"name": "variable.other.constant.ketherscript"
+				}
+			},
+			"end": "]",
+			"name": "meta.environment-variable.ketherscript",
+			"patterns": [
+				{
+					"include": "$self"
+				}
+			]
+		},
+		{
+			"match": "\\b[A-Z]\\w*(?=((\\.|::)[A-Za-z]|\\[))",
+			"name": "support.class.ketherscript"
+		},
+		{
+			"match": ".+(set|actionbar|all|player|any|print|async|await|await_all|check|color|command|day|date|minute|month|second|year|exit|format|goto|inline|join|javascript|location|math|permission|perm)",
+			"name": "support.function.kernel.ketherscript"
+		},
+		{
+			"match": "\\b[_A-Z]\\w*\\b",
+			"name": "variable.other.constant.ketherscript"
+		},
+		{
+			"begin": "(?x)\n(?=def\\b)                          # optimization to help Oniguruma fail fast\n(?<=^|\\s)(def)\\s+\n(\n  (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix\n  (?>                               # method name\n    [a-zA-Z_]\\w*(?>[?!]|=(?!>))?\n    |\n    ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n  )\n)\n\\s*(\\()",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.def.ketherscript"
+				},
+				"2": {
+					"name": "entity.name.function.ketherscript"
+				},
+				"3": {
+					"name": "punctuation.definition.parameters.ketherscript"
+				}
+			},
+			"comment": "The method pattern comes from the symbol pattern. See there for an explanation.",
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.parameters.ketherscript"
+				}
+			},
+			"name": "meta.function.method.with-arguments.ketherscript",
+			"patterns": [
+				{
+					"begin": "(?=[&*_a-zA-Z])",
+					"end": "(?=[,)])",
+					"patterns": [
+						{
+							"include": "#method_parameters"
+						}
+					]
+				},
+				{
+					"include": "#method_parameters"
+				}
+			]
+		},
+		{
+			"begin": "(?x)\n(?=def\\b)                          # optimization to help Oniguruma fail fast\n(?<=^|\\s)(def)\\s+\n(\n  (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix\n  (?>                               # method name\n    [a-zA-Z_]\\w*(?>[?!]|=(?!>))?\n    |\n    ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n  )\n)\n[ \\t]\n(?=[ \\t]*[^\\s#;])                 # make sure the following is not comment",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.def.ketherscript"
+				},
+				"2": {
+					"name": "entity.name.function.ketherscript"
+				}
+			},
+			"comment": "same as the previous rule, but without parentheses around the arguments",
+			"end": "(?=;)|(?<=[\\w\\])}`'\"!?])(?=\\s*#|\\s*$)",
+			"name": "meta.function.method.with-arguments.ketherscript",
+			"patterns": [
+				{
+					"begin": "(?=[&*_a-zA-Z])",
+					"end": "(?=,|;|\\s*#|\\s*$)",
+					"patterns": [
+						{
+							"include": "#method_parameters"
+						}
+					]
+				},
+				{
+					"include": "#method_parameters"
+				}
+			]
+		},
+		{
+			"captures": {
+				"1": {
+					"name": "keyword.control.def.ketherscript"
+				},
+				"3": {
+					"name": "entity.name.function.ketherscript"
+				}
+			},
+			"comment": " the optional name is just to catch the def also without a method-name",
+			"match": "(?x)\n(?=def\\b)                            # optimization to help Oniguruma fail fast\n(?<=^|\\s)(def)\\b\n(\n  \\s+\n  (\n    (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix\n    (?>                               # method name\n      [a-zA-Z_]\\w*(?>[?!]|=(?!>))?\n      |\n      ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n    )\n  )\n)?",
+			"name": "meta.function.method.without-arguments.ketherscript"
+		},
+		{
+			"match": "(?x)\n\\b\n(\n  [\\d](?>_?\\d)*                             # 100_000\n  (\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?   # fractional part\n  ([eE][-+]?\\d(?>_?\\d)*)?                   # 1.23e-4\n  |\n  0\n  (?:\n    [xX]\\h(?>_?\\h)*|\n    [oO]?[0-7](?>_?[0-7])*|\n    [bB][01](?>_?[01])*|\n    [dD]\\d(?>_?\\d)*\n  )                                           # A base indicator can only be used with an integer\n)\\b",
+			"name": "constant.numeric.ketherscript"
+		},
+		{
+			"begin": ":'",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.begin.ketherscript"
+				}
+			},
+			"comment": "symbol literal with '' delimiter",
+			"end": "'",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\['\\\\]",
+					"name": "constant.character.escape.ketherscript"
+				}
+			]
+		},
+		{
+			"begin": ":\"",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.symbol.begin.ketherscript"
+				}
+			},
+			"comment": "symbol literal with \"\" delimiter",
+			"end": "\"",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.symbol.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"comment": "Needs higher precedence than regular expressions.",
+			"match": "(?<!\\()/=",
+			"name": "keyword.operator.assignment.augmented.ketherscript"
+		},
+		{
+			"begin": "'",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"comment": "string literal with '' delimiter",
+			"end": "'",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.single.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\'|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				}
+			]
+		},
+		{
+			"begin": "\"",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"comment": "string literal with interpolation and \"\" delimiter",
+			"end": "\"",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.double.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"begin": "`",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"comment": "execute string (allows for interpolation)",
+			"end": "`",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"begin": "(?x)\n(?<![\\w)])((/))(?![?*+])\n(?=\n  (?:\\\\/|[^/])*+          # Do NOT change the order\n  /[eimnosux]*\\s*\n  (?:\n    [)\\]}#.,?:]|\\|\\||&&|<=>|=>|==|=~|!~|!=|;|$|\n    if|else|elsif|then|do|end|unless|while|until|or|and\n  )\n  |\n  $\n)",
+			"captures": {
+				"1": {
+					"name": "string.regexp.interpolated.ketherscript"
+				},
+				"2": {
+					"name": "punctuation.section.regexp.ketherscript"
+				}
+			},
+			"comment": "regular expression literal with interpolation",
+			"contentName": "string.regexp.interpolated.ketherscript",
+			"end": "((/[eimnosux]*))",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				}
+			]
+		},
+		{
+			"begin": "%r{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.begin.ketherscript"
+				}
+			},
+			"end": "}[eimnosux]*",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.end.ketherscript"
+				}
+			},
+			"name": "string.regexp.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				},
+				{
+					"include": "#nest_curly_r"
+				}
+			]
+		},
+		{
+			"begin": "%r\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.begin.ketherscript"
+				}
+			},
+			"end": "][eimnosux]*",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.end.ketherscript"
+				}
+			},
+			"name": "string.regexp.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				},
+				{
+					"include": "#nest_brackets_r"
+				}
+			]
+		},
+		{
+			"begin": "%r\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.begin.ketherscript"
+				}
+			},
+			"end": "\\)[eimnosux]*",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.end.ketherscript"
+				}
+			},
+			"name": "string.regexp.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				},
+				{
+					"include": "#nest_parens_r"
+				}
+			]
+		},
+		{
+			"begin": "%r<",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.begin.ketherscript"
+				}
+			},
+			"end": ">[eimnosux]*",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.end.ketherscript"
+				}
+			},
+			"name": "string.regexp.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				},
+				{
+					"include": "#nest_ltgt_r"
+				}
+			]
+		},
+		{
+			"begin": "%r([^\\w])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.begin.ketherscript"
+				}
+			},
+			"end": "\\1[eimnosux]*",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.regexp.end.ketherscript"
+				}
+			},
+			"name": "string.regexp.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				}
+			]
+		},
+		{
+			"begin": "%I\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_brackets_i"
+				}
+			]
+		},
+		{
+			"begin": "%I\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_parens_i"
+				}
+			]
+		},
+		{
+			"begin": "%I<",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": ">",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_ltgt_i"
+				}
+			]
+		},
+		{
+			"begin": "%I{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_curly_i"
+				}
+			]
+		},
+		{
+			"begin": "%I([^\\w])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "\\1",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"begin": "%i\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\]|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_brackets"
+				}
+			]
+		},
+		{
+			"begin": "%i\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\\\)|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_parens"
+				}
+			]
+		},
+		{
+			"begin": "%i<",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": ">",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\>|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_ltgt"
+				}
+			]
+		},
+		{
+			"begin": "%i{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\}|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_curly"
+				}
+			]
+		},
+		{
+			"begin": "%i([^\\w])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "\\1",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"comment": "Cant be named because its not necessarily an escape.",
 					"match": "\\\\."
 				}
 			]
+		},
+		{
+			"begin": "%W\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_brackets_i"
+				}
+			]
+		},
+		{
+			"begin": "%W\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_parens_i"
+				}
+			]
+		},
+		{
+			"begin": "%W<",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": ">",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_ltgt_i"
+				}
+			]
+		},
+		{
+			"begin": "%W{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_curly_i"
+				}
+			]
+		},
+		{
+			"begin": "%W([^\\w])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "\\1",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"begin": "%w\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\]|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_brackets"
+				}
+			]
+		},
+		{
+			"begin": "%w\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\\\)|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_parens"
+				}
+			]
+		},
+		{
+			"begin": "%w<",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": ">",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\>|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_ltgt"
+				}
+			]
+		},
+		{
+			"begin": "%w{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\}|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_curly"
+				}
+			]
+		},
+		{
+			"begin": "%w([^\\w])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.array.begin.ketherscript"
+				}
+			},
+			"end": "\\1",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.array.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"comment": "Cant be named because its not necessarily an escape.",
+					"match": "\\\\."
+				}
+			]
+		},
+		{
+			"begin": "%[Qx]?\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_parens_i"
+				}
+			]
+		},
+		{
+			"begin": "%[Qx]?\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_brackets_i"
+				}
+			]
+		},
+		{
+			"begin": "%[Qx]?{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_curly_i"
+				}
+			]
+		},
+		{
+			"begin": "%[Qx]?<",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": ">",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_ltgt_i"
+				}
+			]
+		},
+		{
+			"begin": "%[Qx]([^\\w])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "\\1",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"begin": "%([^\\w\\s=])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "\\1",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.interpolated.ketherscript",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"begin": "%q\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\\\)|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_parens"
+				}
+			]
+		},
+		{
+			"begin": "%q<",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": ">",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\>|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_ltgt"
+				}
+			]
+		},
+		{
+			"begin": "%q\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\]|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_brackets"
+				}
+			]
+		},
+		{
+			"begin": "%q{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\}|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_curly"
+				}
+			]
+		},
+		{
+			"begin": "%q([^\\w])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "\\1",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.quoted.other.ketherscript",
+			"patterns": [
+				{
+					"comment": "Cant be named because its not necessarily an escape.",
+					"match": "\\\\."
+				}
+			]
+		},
+		{
+			"begin": "%s\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.begin.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\\\)|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_parens"
+				}
+			]
+		},
+		{
+			"begin": "%s<",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.begin.ketherscript"
+				}
+			},
+			"end": ">",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\>|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_ltgt"
+				}
+			]
+		},
+		{
+			"begin": "%s\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.begin.ketherscript"
+				}
+			},
+			"end": "]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\]|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_brackets"
+				}
+			]
+		},
+		{
+			"begin": "%s{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.begin.ketherscript"
+				}
+			},
+			"end": "}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"match": "\\\\}|\\\\\\\\",
+					"name": "constant.character.escape.ketherscript"
+				},
+				{
+					"include": "#nest_curly"
+				}
+			]
+		},
+		{
+			"begin": "%s([^\\w])",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.begin.ketherscript"
+				}
+			},
+			"end": "\\1",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.symbol.end.ketherscript"
+				}
+			},
+			"name": "constant.language.symbol.ketherscript",
+			"patterns": [
+				{
+					"comment": "Cant be named because its not necessarily an escape.",
+					"match": "\\\\."
+				}
+			]
+		},
+		{
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.constant.ketherscript"
+				}
+			},
+			"comment": "symbols",
+			"match": "(?x)\n(?<!:)(:)\n(?>\n  [$a-zA-Z_]\\w*(?>[?!]|=(?![>=]))?\n  |\n  ===?|<=>|>[>=]?|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n  |\n  @@?[a-zA-Z_]\\w*\n)",
+			"name": "constant.language.symbol.ketherscript"
+		},
+		{
+			"begin": "^=begin",
+			"captures": {
+				"0": {
+					"name": "punctuation.definition.comment.ketherscript"
+				}
+			},
+			"comment": "multiline comments",
+			"end": "^=end",
+			"name": "comment.block.documentation.ketherscript"
+		},
+		{
+			"include": "#yard"
+		},
+		{
+			"begin": "(^[ \\t]+)?(?=#)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.comment.leading.ketherscript"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"begin": "#",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.ketherscript"
+						}
+					},
+					"end": "\\n",
+					"name": "comment.line.number-sign.ketherscript"
+				}
+			]
+		},
+		{
+			"comment": "\n\t\t\tmatches questionmark-letters.\n\n\t\t\texamples (1st alternation = hex):\n\t\t\t?\\x1     ?\\x61\n\n\t\t\texamples (2nd alternation = octal):\n\t\t\t?\\0      ?\\07     ?\\017\n\n\t\t\texamples (3rd alternation = escaped):\n\t\t\t?\\n      ?\\b\n\n\t\t\texamples (4th alternation = meta-ctrl):\n\t\t\t?\\C-a    ?\\M-a    ?\\C-\\M-\\C-\\M-a\n\n\t\t\texamples (4th alternation = normal):\n\t\t\t?a       ?A       ?0 \n\t\t\t?*       ?\"       ?( \n\t\t\t?.       ?#\n\t\t\t\n\t\t\t\n\t\t\tthe negative lookbehind prevents against matching\n\t\t\tp(42.tainted?)\n\t\t\t",
+			"match": "(?<!\\w)\\?(\\\\(x\\h{1,2}(?!\\h)\\b|0[0-7]{0,2}(?![0-7])\\b|[^x0MC])|(\\\\[MC]-)+\\w|[^\\s\\\\])",
+			"name": "constant.numeric.ketherscript"
+		},
+		{
+			"begin": "^__END__\\n",
+			"captures": {
+				"0": {
+					"name": "string.unquoted.program-block.ketherscript"
+				}
+			},
+			"comment": "__END__ marker",
+			"contentName": "text.plain",
+			"end": "(?=not)impossible",
+			"patterns": [
+				{
+					"begin": "(?=<?xml|<(?i:html\\b)|!DOCTYPE (?i:html\\b))",
+					"end": "(?=not)impossible",
+					"name": "text.html.embedded.ketherscript",
+					"patterns": [
+						{
+							"include": "text.html.basic"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)HTML)\\b\\1))",
+			"comment": "Heredoc with embedded html",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.html",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)HTML)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "text.html",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "text.html.basic"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)XML)\\b\\1))",
+			"comment": "Heredoc with embedded xml",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.xml",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)XML)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "text.xml",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "text.xml"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)SQL)\\b\\1))",
+			"comment": "Heredoc with embedded sql",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.sql",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)SQL)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.sql",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.sql"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)GRAPHQL)\\b\\1))",
+			"comment": "Heredoc with embedded GraphQL",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.graphql",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)GRAPHQL)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.graphql",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.graphql"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)CSS)\\b\\1))",
+			"comment": "Heredoc with embedded css",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.css",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)CSS)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.css",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.css"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)CPP)\\b\\1))",
+			"comment": "Heredoc with embedded c++",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.cpp",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)CPP)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.cpp",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.cpp"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)C)\\b\\1))",
+			"comment": "Heredoc with embedded c",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.c",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)C)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.c",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.c"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)(?:JS|JAVASCRIPT))\\b\\1))",
+			"comment": "Heredoc with embedded javascript",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.js",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)(?:JS|JAVASCRIPT))\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.js",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.js"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)JQUERY)\\b\\1))",
+			"comment": "Heredoc with embedded jQuery javascript",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.js.jquery",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)JQUERY)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.js.jquery",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.js.jquery"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)(?:SH|SHELL))\\b\\1))",
+			"comment": "Heredoc with embedded shell",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.shell",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)(?:SH|SHELL))\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.shell",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.shell"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)LUA)\\b\\1))",
+			"comment": "Heredoc with embedded lua",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.lua",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)LUA)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.lua",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.lua"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)RUBY)\\b\\1))",
+			"comment": "Heredoc with embedded ruby",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.ketherscript",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)RUBY)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "source.ketherscript",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "source.ketherscript"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?=(?><<[-~]([\"'`]?)((?:[_\\w]+_|)SLIM)\\b\\1))",
+			"comment": "Heredoc with embedded slim",
+			"end": "(?!\\G)",
+			"name": "meta.embedded.block.slim",
+			"patterns": [
+				{
+					"begin": "(?><<[-~]([\"'`]?)((?:[_\\w]+_|)SLIM)\\b\\1)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ketherscript"
+						}
+					},
+					"contentName": "text.slim",
+					"end": "^\\s*\\2$\\n?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ketherscript"
+						}
+					},
+					"name": "string.unquoted.heredoc.ketherscript",
+					"patterns": [
+						{
+							"include": "#heredoc"
+						},
+						{
+							"include": "#interpolated_ruby"
+						},
+						{
+							"include": "text.slim"
+						},
+						{
+							"include": "#escaped_char"
+						}
+					]
+				}
+			]
+		},
+		{
+			"begin": "(?>=\\s*<<([\"'`]?)(\\w+)\\1)",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				}
+			},
+			"end": "^\\2$",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.unquoted.heredoc.ketherscript",
+			"patterns": [
+				{
+					"include": "#heredoc"
+				},
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"begin": "(?>((<<[-~]([\"'`]?)(\\w+)\\3,\\s?)*<<[-~]([\"'`]?)(\\w+)\\5))(.*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.definition.string.begin.ketherscript"
+				},
+				"7": {
+					"patterns": [
+						{
+							"include": "source.ketherscript"
+						}
+					]
+				}
+			},
+			"comment": "heredoc with multiple inputs and indented terminator",
+			"end": "^\\s*\\6$",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.ketherscript"
+				}
+			},
+			"name": "string.unquoted.heredoc.ketherscript",
+			"patterns": [
+				{
+					"include": "#heredoc"
+				},
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				}
+			]
+		},
+		{
+			"begin": "(?<={|{\\s|[^A-Za-z0-9_:@$]do|^do|[^A-Za-z0-9_:@$]do\\s|^do\\s)(\\|)",
+			"name": "meta.block.parameters.ketherscript",
+			"captures": {
+				"1": {
+					"name": "punctuation.separator.variable.ketherscript"
+				}
+			},
+			"end": "(?<!\\|)(\\|)(?!\\|)",
+			"patterns": [
+				{
+					"begin": "(?![\\s,|(])",
+					"end": "(?=,|\\|\\s*)",
+					"patterns": [
+						{
+							"match": "\\G([&*]?)([a-zA-Z][\\w_]*)|(_[\\w_]*)",
+							"captures": {
+								"1": {
+									"name": "storage.type.variable.ketherscript"
+								},
+								"2": {
+									"name": "variable.other.block.ketherscript"
+								},
+								"3": {
+									"name": "variable.other.block.unused.ketherscript variable.other.constant.ketherscript"
+								}
+							}
+						}
+					]
+				},
+				{
+					"match": ",",
+					"name": "punctuation.separator.variable.ketherscript"
+				}
+			]
+		},
+		{
+			"match": "=>",
+			"name": "punctuation.separator.key-value"
+		},
+		{
+			"match": "->",
+			"name": "support.function.kernel.ketherscript"
+		},
+		{
+			"match": "<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|-=|\\^=|\\|{1,2}=|<<",
+			"name": "keyword.operator.assignment.augmented.ketherscript"
+		},
+		{
+			"match": "(<=>|<(?!<|=)|>(?!<|=|>)|is|not|is/*|gt|lt|<=|>=|===|==|to|=~|!=|!~|(?<=[ \\t])\\?)",
+			"name": "keyword.operator.comparison.ketherscript"
+		},
+		{
+			"match": "(?<!\\.)\\b(and|not|or)\\b(?![?!])",
+			"name": "keyword.operator.logical.ketherscript"
+		},
+		{
+			"match": "(?<=^|[ \\t!])!|&&|\\|\\||\\^",
+			"name": "keyword.operator.logical.ketherscript"
+		},
+		{
+			"comment": "Safe navigation operator",
+			"match": "(&\\.)\\s*(?![A-Z])",
+			"captures": {
+				"1": {
+					"name": "keyword.operator.logical.ketherscript"
+				}
+			}
+		},
+		{
+			"match": "(%|&|\\*\\*|\\*|\\+|-|/)",
+			"name": "keyword.operator.arithmetic.ketherscript"
+		},
+		{
+			"match": "=",
+			"name": "keyword.operator.assignment.ketherscript"
+		},
+		{
+			"match": "\\||~|>>",
+			"name": "keyword.operator.other.ketherscript"
+		},
+		{
+			"match": ";",
+			"name": "punctuation.separator.statement.ketherscript"
+		},
+		{
+			"match": ",",
+			"name": "punctuation.separator.object.ketherscript"
+		},
+		{
+			"comment": "如果双冒号后跟大写字母，则标记为命名空间分隔符",
+			"match": "(::)\\s*(?=[A-Z])",
+			"captures": {
+				"1": {
+					"name": "punctuation.separator.namespace.ketherscript"
+				}
+			}
+		},
+		{
+			"comment": "如果双冒号后不跟大写字母，则标记为方法分隔符",
+			"match": "(\\.|::)\\s*(?![A-Z])",
+			"captures": {
+				"1": {
+					"name": "punctuation.separator.method.ketherscript"
+				}
+			}
+		},
+		{
+			"comment": "必须在方法和常量分隔符之后首选双冒号",
+			"match": ":",
+			"name": "punctuation.separator.other.ketherscript"
+		},
+		{
+			"match": "{",
+			"name": "punctuation.section.scope.begin.ketherscript"
+		},
+		{
+			"match": "}",
+			"name": "punctuation.section.scope.end.ketherscript"
+		},
+		{
+			"match": "\\[",
+			"name": "punctuation.section.array.begin.ketherscript"
+		},
+		{
+			"match": "]",
+			"name": "punctuation.section.array.end.ketherscript"
+		},
+		{
+			"match": "\\(|\\)",
+			"name": "punctuation.section.function.ketherscript"
+		},
+		{
+			"name": "meta.function-call.ketherscript",
+			"begin": "(?<=[^\\.]\\.|::)(?=[a-zA-Z][a-zA-Z0-9_!?]*[^a-zA-Z0-9_!?])",
+			"end": "(?<=[a-zA-Z0-9_!?])(?=[^a-zA-Z0-9_!?])",
+			"patterns": [
+				{
+					"name": "entity.name.function.ketherscript",
+					"match": "([a-zA-Z][a-zA-Z0-9_!?]*)(?=[^a-zA-Z0-9_!?])"
+				}
+			]
+		},
+		{
+			"begin": "([a-zA-Z]\\w*[!?]?)(\\()",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.ketherscript"
+				},
+				"2": {
+					"name": "punctuation.section.function.ketherscript"
+				}
+			},
+			"end": "(\\))",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.section.function.ketherscript"
+				}
+			},
+			"name": "meta.function-call.ketherscript",
+			"patterns": [
+				{
+					"include": "$self"
+				}
+			]
+		},
+		{
+			"comment": "这是一种实验性。确实没有办法完美匹配所有常规变量，但是您可以很好地假设某些curcumance中的任何正常单词尚未被限定为其他内容可能是变量，并且优点胜过潜在的错误",
+			"match": "((?<=\\W)\\b|^)\\w+\\b(?=\\s*([\\]\\)\\}\\=\\+\\-\\*\\/\\^\\$\\,\\.\\&]|<\\s|<<[\\s|\\.])?)",
+			"name": "variable.other.ketherscript"
 		}
-	},
-	"scopeName": "source.ks"
+	],
+	"repository": {
+		"method_parameters": {
+			"patterns": [
+				{
+					"include": "#parens"
+				},
+				{
+					"include": "#braces"
+				},
+				{
+					"include": "#brackets"
+				},
+				{
+					"include": "#params"
+				},
+				{
+					"include": "$self"
+				}
+			],
+			"repository": {
+				"params": {
+					"captures": {
+						"1": {
+							"name": "storage.type.variable.ketherscript"
+						},
+						"2": {
+							"name": "constant.other.symbol.hashkey.parameter.function.ketherscript"
+						},
+						"3": {
+							"name": "punctuation.definition.constant.ketherscript"
+						},
+						"4": {
+							"name": "variable.parameter.function.ketherscript"
+						}
+					},
+					"match": "\\G(&|\\*\\*?)?(?:([_a-zA-Z]\\w*[?!]?(:))|([_a-zA-Z]\\w*))"
+				},
+				"braces": {
+					"begin": "\\{",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.scope.begin.ketherscript"
+						}
+					},
+					"end": "\\}",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.scope.end.ketherscript"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#parens"
+						},
+						{
+							"include": "#braces"
+						},
+						{
+							"include": "#brackets"
+						},
+						{
+							"include": "$self"
+						}
+					]
+				},
+				"brackets": {
+					"begin": "\\[",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.array.begin.ketherscript"
+						}
+					},
+					"end": "\\]",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.array.end.ketherscript"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#parens"
+						},
+						{
+							"include": "#braces"
+						},
+						{
+							"include": "#brackets"
+						},
+						{
+							"include": "$self"
+						}
+					]
+				},
+				"parens": {
+					"begin": "\\(",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.function.begin.ketherscript"
+						}
+					},
+					"end": "\\)",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.function.end.ketherscript"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#parens"
+						},
+						{
+							"include": "#braces"
+						},
+						{
+							"include": "#brackets"
+						},
+						{
+							"include": "$self"
+						}
+					]
+				}
+			}
+		},
+		"escaped_char": {
+			"match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
+			"name": "constant.character.escape.ketherscript"
+		},
+		"heredoc": {
+			"begin": "^<<[-~]?\\w+",
+			"end": "$",
+			"patterns": [
+				{
+					"include": "$self"
+				}
+			]
+		},
+		"interpolated_ruby": {
+			"patterns": [
+				{
+					"begin": "#{",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.embedded.begin.ketherscript"
+						}
+					},
+					"contentName": "source.ketherscript",
+					"end": "}",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.embedded.end.ketherscript"
+						}
+					},
+					"name": "meta.embedded.line.ketherscript",
+					"patterns": [
+						{
+							"include": "#nest_curly_and_self"
+						},
+						{
+							"include": "$self"
+						}
+					]
+				},
+				{
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.variable.ketherscript"
+						}
+					},
+					"match": "(#@)[a-zA-Z_]\\w*",
+					"name": "variable.other.readwrite.instance.ketherscript"
+				},
+				{
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.variable.ketherscript"
+						}
+					},
+					"match": "(#@@)[a-zA-Z_]\\w*",
+					"name": "variable.other.readwrite.class.ketherscript"
+				},
+				{
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.variable.ketherscript"
+						}
+					},
+					"match": "(#\\$)[a-zA-Z_]\\w*",
+					"name": "variable.other.readwrite.global.ketherscript"
+				}
+			]
+		},
+		"nest_brackets": {
+			"begin": "\\[",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "]",
+			"patterns": [
+				{
+					"include": "#nest_brackets"
+				}
+			]
+		},
+		"nest_brackets_i": {
+			"begin": "\\[",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "]",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_brackets_i"
+				}
+			]
+		},
+		"nest_brackets_r": {
+			"begin": "\\[",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "]",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				},
+				{
+					"include": "#nest_brackets_r"
+				}
+			]
+		},
+		"nest_curly": {
+			"begin": "{",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "}",
+			"patterns": [
+				{
+					"include": "#nest_curly"
+				}
+			]
+		},
+		"nest_curly_and_self": {
+			"patterns": [
+				{
+					"begin": "{",
+					"captures": {
+						"0": {
+							"name": "punctuation.section.scope.ketherscript"
+						}
+					},
+					"end": "}",
+					"patterns": [
+						{
+							"include": "#nest_curly_and_self"
+						}
+					]
+				},
+				{
+					"include": "$self"
+				}
+			]
+		},
+		"nest_curly_i": {
+			"begin": "{",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "}",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_curly_i"
+				}
+			]
+		},
+		"nest_curly_r": {
+			"begin": "{",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "}",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				},
+				{
+					"include": "#nest_curly_r"
+				}
+			]
+		},
+		"nest_ltgt": {
+			"begin": "<",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": ">",
+			"patterns": [
+				{
+					"include": "#nest_ltgt"
+				}
+			]
+		},
+		"nest_ltgt_i": {
+			"begin": "<",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": ">",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_ltgt_i"
+				}
+			]
+		},
+		"nest_ltgt_r": {
+			"begin": "<",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": ">",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				},
+				{
+					"include": "#nest_ltgt_r"
+				}
+			]
+		},
+		"nest_parens": {
+			"begin": "\\(",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"patterns": [
+				{
+					"include": "#nest_parens"
+				}
+			]
+		},
+		"nest_parens_i": {
+			"begin": "\\(",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"patterns": [
+				{
+					"include": "#interpolated_ruby"
+				},
+				{
+					"include": "#escaped_char"
+				},
+				{
+					"include": "#nest_parens_i"
+				}
+			]
+		},
+		"nest_parens_r": {
+			"begin": "\\(",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.scope.ketherscript"
+				}
+			},
+			"end": "\\)",
+			"patterns": [
+				{
+					"include": "#regex_sub"
+				},
+				{
+					"include": "#nest_parens_r"
+				}
+			]
+		}
+	}
 }

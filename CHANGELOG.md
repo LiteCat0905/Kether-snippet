@@ -9,3 +9,14 @@
 - [M] 规范描述
 ### V1.0.2
 - [+] 简单支持.ks(Kether Script)文件
+### V1.0.3
+
+- [M] 支持.ks(Kether Script)文件
+- [+] 支持.ady文件支持
+- [M] 修正 TabooLib公有动作 关于IF,ELSE的格式
+- [+] 新增 Chemdah 公私有动作
+- [M] 修正 TabooLib公有动作 关于CHECK的语法错误
+
+### V1.0.4
+
+- [M] 修复package配置

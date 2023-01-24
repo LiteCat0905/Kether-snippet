@@ -1,0 +1,129 @@
+// Chemdah 提供的私有动作
+{
+    "作用于任务或对话开始时的脚本代理中，可取消行为。": {
+        "prefix": [
+            "Cancel",
+        ],
+        "description": "(Chemdah私人动作)cancel",
+        "body": [
+            "cancel",
+        ]
+    },
+    "向上取整": {
+        "prefix": [
+            "Ceil",
+        ],
+        "description": "(Chemdah私人动作)ceil {aciton}",
+        "body": [
+            "ceil $1",
+        ]
+    },
+    "作用于对话的脚本代理中，可结束对话。": {
+        "prefix": [
+            "Close",
+        ],
+        "description": "(Chemdah私人动作)close",
+        "body": [
+            "close",
+        ]
+    },
+    "向下取整": {
+        "prefix": [
+            "Floor",
+        ],
+        "description": "(Chemdah私人动作)floor {aciton}",
+        "body": [
+            "floor $1",
+        ]
+    },
+    "跳转到特定对话结构中。": {
+        "prefix": [
+            "Goto",
+        ],
+        "description": "(Chemdah私人动作)goto {token}",
+        "body": [
+            "goto $1",
+        ]
+    },
+    "取两值之最大": {
+        "prefix": [
+            "Max",
+        ],
+        "description": "(Chemdah私人动作)max {aciton} {action}",
+        "body": [
+            "max $1 $2",
+        ]
+    },
+    "作用于对话的脚本代理中，可获取对话 NPC 的头顶坐标。": {
+        "prefix": [
+            "Origin",
+        ],
+        "description": "(Chemdah私人动作)origin",
+        "body": [
+            "origin",
+        ]
+    },
+    "取两值之最小": {
+        "prefix": [
+            "Min",
+        ],
+        "description": "(Chemdah私人动作)min {aciton} {action}",
+        "body": [
+            "mine $1 $2",
+        ]
+    },
+    "在 Chemdah 任务脚本代理中，返回当前任务或条目序号。": {
+        "prefix": [
+            "Quest This",
+        ],
+        "description": "(Chemdah私人动作)this [task]",
+        "body": [
+            "this $1",
+        ]
+    },
+    "作用于 agent:begin 时：增加 NPC 即将发送的对话内容。作用于 agent:refuse, agent:end, then 时：使 NPC 立即发送特定内容，常用于对话的收尾。": {
+        "prefix": [
+            "Talk",
+        ],
+        "description": "(Chemdah私人动作)talk {token}",
+        "body": [
+            "talk \"$1\"",
+        ]
+    },
+    "仅作用于 UI 模块的配置文件中，用于构建任务的完成进度。": {
+        "prefix": [
+            "UI",
+        ],
+        "description": "(Chemdah私人动作)ui (percent|bar {token}) {token list} [exclude {token list}]",
+        "body": [
+            "ui ${1|percent,bar|} [ $2 ] exclude [ $3 ]",
+        ]
+    },
+    "修改或获取全局变量。": {
+        "prefix": [
+            "Variable",
+        ],
+        "description": "(Chemdah私人动作)var {action} [(add|to) {action}] [default {action}]",
+        "body": [
+            "var key add $1 default $2",
+        ]
+    },
+    "唤起或停止 Wizard 引导": {
+        "prefix": [
+            "Wizard",
+        ],
+        "description": "(Chemdah私人动作)wizard (to {action}|cancel)",
+        "body": [
+            "wizard to \"$1\"",
+        ]
+    },
+    "定义离线补偿，当玩家在 fetch reset 语句执行前离开游戏时，那么玩家下次进入游戏后将执行 fetch mark 中的语句。": {
+        "prefix": [
+            "Workflows Fetch",
+        ],
+        "description": "(Chemdah私人动作)fetch (mark {token} {action}|reset {token})",
+        "body": [
+            "fetch mark $1 { $2 }",
+        ]
+    },
+}

@@ -1,0 +1,374 @@
+// Chemdah 提供的公有动作
+{
+    "获取坐标中的 X、Y、Z 轴整数值。": {
+        "prefix": [
+            "Block",
+        ],
+        "description": "(Chemdah公有动作)block (x|y|z) in {location}",
+        "body": [
+            "block ${1|x,y,z|} in ${2:world} ${3:0} ${4:0} ${5:0}",
+        ]
+    },
+    "判断两个坐标之间的距离，若两坐标位于不同世界则返回 -1。": {
+        "prefix": [
+            "Distance",
+        ],
+        "description": "(Chemdah公有动作)distance {location} to {location}",
+        "body": [
+            "distance $1 to $2",
+        ]
+    },
+    "检查玩家装备是否为特定物品，使用 Chemdah 物品表达式。表达式帮助详见 Chemdah 文档。": {
+        "prefix": [
+            "Equipment Check",
+            "equip check"
+        ],
+        "description": "(Chemdah公有动作)inventory {equipment} is {token} [amount {int}]",
+        "body": [
+            "inventory ${1|hand,offhand,head,chest,legs,boots|} is \"$2\" amount $3",
+        ]
+    },
+    "Minecraft:": {
+        "prefix": [
+            "Minecraft:"
+        ],
+        "description": "(Chemdah公有动作)Minecraft:",
+        "body": [
+            "minecraft:$1",
+        ]
+    },
+    "检查玩家背包中是否含有特定物品，使用 Chemdah 物品表达式。": {
+        "prefix": [
+            "Inventory Check",
+        ],
+        "description": "(Chemdah公有动作)inventory check {token} [amount {int}]",
+        "body": [
+            "inventory check \"$1\" amount $2",
+        ]
+    },
+    "关闭玩家当前页面。": {
+        "prefix": [
+            "Inventory Close",
+        ],
+        "description": "(Chemdah公有动作)inventory close",
+        "body": [
+            "inventory close",
+        ]
+    },
+    "获取玩家背包中的特定物品数量，使用 Chemdah 物品表达式。": {
+        "prefix": [
+            "Inventory Count",
+        ],
+        "description": "(Chemdah公有动作)inventory (count|amount) {token}",
+        "body": [
+            "inventory count \"$1\"",
+        ]
+    },
+    "检查玩家背包中某个位置是否为特定物品，使用 Chemdah 物品表达式。": {
+        "prefix": [
+            "Inv Slot Check",
+        ],
+        "description": "(Chemdah公有动作)inventory slot {int} is {token} [amount {int}]",
+        "body": [
+            "inventory slot $1 is \"$2\" amount $3",
+        ]
+    },
+    "检查玩家背包中是否含有特定物品并移除，使用 Chemdah 物品表达式。": {
+        "prefix": [
+            "Inventory Take",
+        ],
+        "description": "(Chemdah公有动作)inventory (remove|take) {token} [amount {int}]",
+        "body": [
+            "inventory take \"$1\" amount $2",
+        ]
+    },
+    "(Chemdah公有动作)获取坐标中的 X、Y、Z、Yaw、Pitch 或修改。": {
+        "prefix": [
+            "Location X,Y,Z",
+        ],
+        "description": "(Chemdah公有动作)(x|y|z|yaw|pitch) in {locaiton} [(to|add) {action}]",
+        "body": [
+            "${1|x,y,z|} in location ${2:world} ${3:0} ${4:0} ${5:0}",
+        ]
+    },
+    "获取玩家的 MMOCore 属性点数。": {
+        "prefix": [
+            "MMOCore Attribute Point",
+        ],
+        "description": "(Chemdah公有动作)mmocore attribute point",
+        "body": [
+            "mmocore attribute point",
+        ]
+    },
+    "获取玩家的 MMOCore 职业相关数据。": {
+        "prefix": [
+            "MMOCore Class",
+        ],
+        "description": "(Chemdah公有动作)mmocore class (id|name|point)",
+        "body": [
+            "mmocore class ${1|id,name,point|}",
+        ]
+    },
+    "获取玩家的 MMOCore 等级或经验值。": {
+        "prefix": [
+            "MMOCore Level & Exp",
+        ],
+        "description": "(Chemdah公有动作)mmocore (level|experience|exp)",
+        "body": [
+            "mmocore ${1|level,experience|exp|}",
+        ]
+    },
+    "获取玩家的 MMOCore 法力值。": {
+        "prefix": [
+            "MMOCore Mana",
+        ],
+        "description": "(Chemdah公有动作)mmocore mana",
+        "body": [
+            "mmocore mana",
+        ]
+    },
+    "获取玩家的 MMOCore 耐力值。": {
+        "prefix": [
+            "MMOCore Stamina",
+        ],
+        "description": "(Chemdah公有动作)mmocore stamina",
+        "body": [
+            "mmocore stamina",
+        ]
+    },
+    "使玩家执行 MythicMobs 怪物技能。": {
+        "prefix": [
+            "MythicMobs Cast",
+        ],
+        "description": "(Chemdah公有动作)(mythicmobs|mm) cast {token} [with {trigger}]",
+        "body": [
+            "mm cast $1 with ${2|DEFAULT,API,ATTACK,BOW_HIT,BLOCK,BLOCK_PLACE,BLOCK_BREAK,COMBAT,CONSUME,CROUCH,UNCROUCH,DAMAGED,DROPCOMBAT,DEATH,DESPAWNED,ENTERCOMBAT,EXPLODE,INTERACT,KILL,KILLPLAYER,PLAYERDEATH,SHOOT,SIGNAL,SPAWN,SPLASH_POTION,SWING,TARGETCHANGE,TARGETED,TELEPORT,TIMER,USE,RIGHTCLICK,READY,CAST,FISH,FISH_BITE,FISH_CATCH_FISH,FISH_CATCH_ENTITY,FISH_GROUND,FISH_REEL,FISH_FAIL,TAME,TAME_FAIL,TRIDENT_THROW,TRIDENT_HIT,CUSTOM|}",
+        ]
+    },
+    "在指定的坐标下播放粒子效果，若在结尾使用 @self 则只播放给自己。": {
+        "prefix": [
+            "Particle Normal",
+        ],
+        "description": "(Chemdah公有动作)particle normal {token} (at|on) {location} [@self]",
+        "body": [
+            "particle normal \"${1:flame} ${2:0} ${3:0} ${4:0} -count ${5:10} -speed ${6:0.1}\" at location ${7:world} ${8:0} ${9:0} ${10:0} @self",
+        ]
+    },
+    "检测玩家是否在特定区域内，使用 Chemdah 坐标表达式": {
+        "prefix": [
+            "Position",
+        ],
+        "description": "(Chemdah公有动作)position in[side] {token}",
+        "body": [
+            "position inside \"${1:world} ${2:0} ${3:0} ${4:0} > 10 10 10\"",
+        ]
+    },
+    "修改或获取玩家的变量。": {
+        "prefix": [
+            "Profile Data",
+        ],
+        "description": "(Chemdah公有动作)profile data {action} [(add|to) {action}] [default {action}]",
+        "body": [
+            "profile data $1 add $2 default $3",
+        ]
+    },
+    "修改或获取玩家自定义等级中的等级或经验。": {
+        "prefix": [
+            "Profile Level",
+        ],
+        "description": "(Chemdah公有动作)profile level {action} (level|exp|exp-max) [(add|to) {action}]",
+        "body": [
+            "profile level ${1:default} exp add $2",
+        ]
+    },
+    "检测玩家正在进行的或尚未接受的任务（已选择的）。": {
+        "prefix": [
+            "Quest Check",
+        ],
+        "description": "(Chemdah公有动作)bbbbbbb",
+        "body": [
+            "quest  ${1|accept-check,accepted,completed|}",
+        ]
+    },
+    "控制玩家正在进行的或尚未接受的任务 (已选择的）。": {
+        "prefix": [
+            "Quest Control",
+        ],
+        "description": "(Chemdah公有动作)quest {control}",
+        "body": [
+            "quest ${1|accept,complete,fail,restart,stop|}",
+        ]
+    },
+    "修改或获取玩家当前任务（已选择的）中的变量。": {
+        "prefix": [
+            "Quest Data",
+        ],
+        "description": "(Chemdah公有动作)quest data {action} [(add|to) {action}] [default {action}]",
+        "body": [
+            "quest data $1 add $2 default $3",
+        ]
+    },
+    "检测玩家是否接受或已完成任务组": {
+        "prefix": [
+            "Quest Group Check",
+        ],
+        "description": "(Chemdah公有动作)quest-group (accepted|completed) {action}",
+        "body": [
+            "quest-group ${1|accepted,completed|} $2",
+        ]
+    },
+    "获取玩家当前任务（已选择的）或任务（已选择的）中的某项条目的进度信息。": {
+        "prefix": [
+            "Quest Progress",
+        ],
+        "description": "(Chemdah公有动作)quest progress (value|target|percent|percent100) [task {action}]",
+        "body": [
+            "quest progress ${1|value,target,percent,percent100|} task $2",
+        ]
+    },
+    "选择任何一个服务器中存在的有效任务以供后续操作。": {
+        "prefix": [
+            "Quest Select",
+        ],
+        "description": "(Chemdah公有动作)quest select {action}",
+        "body": [
+            "quest select $1",
+        ]
+    },
+    "隐藏或刷新任务（已选择的）或任务（已选择的）中某项条目的进度显示。": {
+        "prefix": [
+            "Quest Stats",
+        ],
+        "description": "(Chemdah公有动作)quest stats (hide |refresh} [task {action|}]",
+        "body": [
+            "quest stats ${1|refresh,hide|} task $2",
+        ]
+    },
+    "获取某个任务 (已选择) 中的所有条目序号。": {
+        "prefix": [
+            "Quest Tasks",
+        ],
+        "description": "(Chemdah公有动作)quest tasks",
+        "body": [
+            "quest tasks",
+        ]
+    },
+    "使玩家追踪任务（已选择的）": {
+        "prefix": [
+            "Quest Track",
+        ],
+        "description": "(Chemdah公有动作)quest track",
+        "body": [
+            "quest track",
+        ]
+    },
+    "获取玩家正在追踪的任务名称": {
+        "prefix": [
+            "Quest Tracking",
+        ],
+        "description": "(Chemdah公有动作)quest tracking",
+        "body": [
+            "quest tracking",
+        ]
+    },
+    "获取玩家当前正在进行的所有任务，使用 self 则忽略共享（多人）任务。": {
+        "prefix": [
+            "Quests",
+        ],
+        "description": "(Chemdah公有动作)quests [self]",
+        "body": [
+            "quests ${1:self}",
+        ]
+    },
+    "在 #Location 构建的坐标出生成特定 WorldEdit 建筑模板。或旋转、忽略空气": {
+        "prefix": [
+            "Schematic",
+        ],
+        "description": "(Chemdah公有动作)schem[atic] {action} (at|on) {location} [rotation {int}] [ignore air]",
+        "body": [
+            "schematic $1",
+        ]
+    },
+    "运行或停止某个脚本文件。": {
+        "prefix": [
+            "Script",
+            "KetherScript"
+        ],
+        "description": "(Chemdah公有动作)script (run|stop) {token}",
+        "body": [
+            "script ${1|run,stop|} $2",
+        ]
+    },
+    "获取玩家的 SkillAPI 属性或属性点数。": {
+        "prefix": [
+            "SkillAPI Attribute",
+        ],
+        "description": "(Chemdah公有动作)skillapi attribute (point|{token})",
+        "body": [
+            "skillapi attribute ${1|point,{token}|}",
+        ]
+    },
+    "使玩家执行 SkillAPI 技能。": {
+        "prefix": [
+            "SkillAPI Cast",
+        ],
+        "description": "(Chemdah公有动作)skillapi cast {token}",
+        "body": [
+            "skillapi cast $1",
+        ]
+    },
+    "获取玩家的 SkillAPI 职业相关数据。": {
+        "prefix": [
+            "SkillAPI Class",
+        ],
+        "description": "(Chemdah公有动作)skillapi class (main|size)",
+        "body": [
+            "skillapi class ${1|main,size|}",
+        ]
+    },
+    "获取玩家的 SkillAPI 当前经验值或升级所需经验。": {
+        "prefix": [
+            "SkillAPI Exp",
+        ],
+        "description": "(Chemdah公有动作)skillapi exp (total|required)",
+        "body": [
+            "skillapi exp ${1|total,required|}",
+        ]
+    },
+    "获取玩家的 SkillAPI 等级或是否满级。": {
+        "prefix": [
+            "SkillAPI Level",
+        ],
+        "description": "(Chemdah公有动作)mmocore level [maxed]",
+        "body": [
+            "mmocore level ${1:maxed}",
+        ]
+    },
+    "获取玩家的 SkillAPI 法力值。": {
+        "prefix": [
+            "SkillAPI Mana",
+        ],
+        "description": "(Chemdah公有动作)skillapi mana",
+        "body": [
+            "skillapi mana",
+        ]
+    },
+    "获取玩家的 SkillAPI 技能点数。": {
+        "prefix": [
+            "SkillAPI Skill Point",
+        ],
+        "description": "(Chemdah公有动作)skillapi skill point",
+        "body": [
+            "skillapi skill point",
+        ]
+    },
+    "唤起玩家的 Trigger 任务": {
+        "prefix": [
+            "Trigger",
+        ],
+        "description": "(Chemdah公有动作)trigger {token}",
+        "body": [
+            "trigger $1",
+        ]
+    }
+}

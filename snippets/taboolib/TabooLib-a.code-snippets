@@ -144,84 +144,84 @@
     "prefix": "Check == (相等)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 == $2 then $3 else $4",
+        "check $1 == $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(is)": {
     "prefix": "Check is (相等)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 is $2 then $3 else $4",
+        "check $1 is $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(!=)": {
     "prefix": "Check != (不相等)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 != $2 then $3 else $4",
+        "check $1 != $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(not)": {
     "prefix": "Check not (不相等)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 not $2 then $3 else $4",
+        "check $1 not $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(=!)": {
     "prefix": "Check =! (相似等于)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 != $2 then $3 else $4",
+        "check $1 != $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(is?)": {
     "prefix": "Check is? (相似等于)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 is? $2 then $3 else $4",
+        "check $1 is? $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(>)": {
     "prefix": "Check > (大于)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 > $2 then $3 else $4",
+        "check $1 > $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(gt)": {
     "prefix": "Check gt (大于)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 gt $2 then $3 else $4",
+        "check $1 gt $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(>=)": {
     "prefix": "Check >= (大于等于)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 >= $2 then $3 else $4",
+        "check $1 >= $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(<)": {
     "prefix": "Check < (小于)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 < $2 then $3 else $4",
+        "check $1 < $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(lt)": {
     "prefix": "Check lt (小于)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 lt $2 then $3 else $4",
+        "check $1 lt $2",
     ]
   },
   "将两个动作的返回值进行对比，支持多种判定方式。(<=)": {
     "prefix": "Check <= (小于等于)",
     "description": "(公有动作)check {action} {symbol} {action}",
     "body": [
-        "check $1 <= $2 then $3 else $4",
+        "check $1 <= $2",
     ]
   },
   "将动作的返回值作为命令执行，默认以玩家为执行者。": {
@@ -403,7 +403,7 @@
     "prefix": "ForEach",
     "description": "(公有动作)for {token} in {action} then {action}",
     "body": [
-        "for $1 in $2 then $3",
+        "for $1 in $2 then { $3 }",
     ]
   },
   "使用特定的方式格式化特定的时间。": {
@@ -466,7 +466,7 @@
     "prefix": "If & Else",
     "description": "(公有动作)If {action} then {action} [else {action}]",
     "body": [
-        "if $1 then $2 else $3",
+        "if $1 then { $2 } else { $3 }",
     ]
   },
   "替换动作的返回值中所有内联脚本。内联脚本指在字符串中使用 {{ ... }} 插入脚本代码。": {

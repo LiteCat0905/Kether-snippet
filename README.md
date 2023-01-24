@@ -25,6 +25,10 @@
 
 1. GITHUB ISSUES: https://github.com/LiteCat0905/Kether-snippet/issues
 ---
+### 1.0.4 (2023/1/20 23:23)
+
+- 紧急修复一处BUG （1.0.3版本报废！）
+
 ### 1.0.0 (2023/1/17 1:48)
 
 - 编写所有由 TabooLib 提供的公有动作以及原生动作的补全
@@ -40,4 +44,14 @@
 
 - 简单支持.ks(Kether Script)文件
 > 还没具体写语法相关的东西，只能识别这类文件罢了（ 还在学着写
+
+### 1.0.3 (2023/1/20 1:47)
+
+- ※该版本报废
+- 支持.ks(Kether Script)文件
+> 照着Ruby简单写了些语法高亮（还是不会写）支持高亮大部分Kether语法
+- 支持.ady文件支持 同上
+- 修正 TabooLib公有动作 关于IF,ELSE的格式
+- 新增 Chemdah 公私有动作
+- 修复 TabooLib公有动作 关于CHECK 的语法错误
 

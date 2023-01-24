@@ -1,0 +1,24 @@
+// KetherScript快速创建脚本
+{
+    "定义": {
+        "prefix": [
+            "def",
+        ],
+        "description": "KetherScript",
+        "body": [
+            "def",
+        ]
+    },
+    "创建主函数": {
+        "prefix": [
+            "main",
+        ],
+        "description": "KetherScript",
+        "body": [
+            "def main = {",
+            "   $1",
+            "}"
+
+        ]
+    }
+}

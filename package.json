@@ -2,12 +2,12 @@
   "name": "kether-snippet",
   "displayName": "Kether支持",
   "description": "Kether动作补全以及支持KetherScript",
-  "keywords": ["kether", "ks", "questengine","TabooLib"],
+  "keywords": ["kether", "ks", "questengine","TabooLib","trmenu"],
   "publisher": "LiteCat",
-  "version": "1.0.2",
+  "version": "1.0.5-dev",
   "icon": "images/icon.png",
   "engines": {
-    "vscode": "^1.73.0"
+    "vscode": "^1.70.0"
   },
   "repository": {
     "type": "git",
@@ -21,25 +21,45 @@
     "snippets": [
       {
         "language": "yaml",
-        "path": "./snippets/TabooLib公有动作.code-snippets"
-      },
-      {
-        "language": "ketherscript",
-        "path": "./snippets/TabooLib公有动作.code-snippets"
+        "path": "./snippets/taboolib/TabooLib-a.code-snippets"
       },
       {
         "language": "yaml",
-        "path": "./snippets/questengine私有动作.code-snippets"
+        "path": "./snippets/questengine/questengine-m.code-snippets"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/chemdah/Chemdah-a.code-snippets"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/chemdah/Chemdah-m.code-snippets"
       },
       {
         "language": "ketherscript",
-        "path": "./snippets/questengine私有动作.code-snippets"
+        "path": "./snippets/chemdah/Chemdah-a.code-snippets"
+      },
+      {
+        "language": "ketherscript",
+        "path": "./snippets/chemdah/Chemdah-m.code-snippets"
+      },
+      {
+        "language": "ketherscript",
+        "path": "./snippets/taboolib/TabooLib-a.code-snippets"
+      },
+      {
+        "language": "ketherscript",
+        "path": "./snippets/questengine/questengine-m.code-snippets"
+      },
+      {
+        "language": "ketherscript",
+        "path": "./snippets/ketherscript/ketherscript.code-snippets"
       }
     ],
     "languages": [{
       "id": "ketherscript",
       "aliases": ["Kether Script", "ketherscript"],
-      "extensions": [".ks"],
+      "extensions": [".ks",".ady",".yml"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{
