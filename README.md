@@ -10,10 +10,13 @@
 ## 📃特点
 ---
 ### 你只需要记住标题
-![图](https://www.rtcraft.cn/assets/img/event/2.png)
+![图](https://pic.imgdb.cn/item/6570a2d2c458853aef039400.png)
 ### 输入文字自动补全！
-![动图](https://www.rtcraft.cn/assets/img/event/kether-s.gif)
-> 我们已经实现了所有由 TabooLib 提供的公有动作以及原生动作的补全以及提示(类似WIKI)
+![动图](https://pic.imgdb.cn/item/6570a2cbc458853aef037198.gif)
+> 我们已经实现了所有由 TabooLib 提供的公有动作以及原生动作、Chemdah、QuestEngine的补全以及提示 (类似WIKI)
+
+### **[ 测试 ]** 打开文件 【光标选中文件名(例如 *litecat.ks* ) 按下 `Ctrl` + `F12` 即可跳转工作区下为*litecat.ks*的文件】__[ 支持在YAML/KetherScript 中使用 ]__
+### **[ 测试 ]** 对KETHERSCRIPT的格式化程序
 ---
 ## ✏想法与意见
 
@@ -21,10 +24,21 @@
 
 1. QQ：961274111
 
-1. 邮件: 961274111@qq.com 
+1. 邮件: littttt87@hotmail.com
 
 1. GITHUB ISSUES: https://github.com/LiteCat0905/Kether-snippet/issues
 ---
+
+### 1.0.5 预览版 (2023/12/10)
+
+- 添加KS文件图标[ Light/Dark ]
+- 更新了插件图标
+- 修复Taboolib中公有动作Literal的错误
+- 添加KetherScript的创建函数的补全
+- **[ 测试 ]** 添加新功能打开文件 【光标选中文件名(例如 *litecat.ks* ) 按下 `Ctrl` + `F12` 即可跳转工作区下为*litecat.ks*的文件】__[ 支持在YAML/KetherScript 中使用 ]__
+- **[ 测试 ]** 添加新功能对KETHERSCRIPT的格式化程序
+- 重构Kether的代码高亮
+
 ### 1.0.4 (2023/1/20 23:23)
 
 - 紧急修复一处BUG （1.0.3版本报废！）
