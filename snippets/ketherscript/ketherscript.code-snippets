@@ -1,5 +1,17 @@
 // KetherScript快速创建脚本
 {
+    "创建函数": {
+        "prefix": [
+            "def",
+        ],
+        "description": "KetherScript",
+        "body": [
+            "def $1 = {",
+            "    $2",
+            "}"
+
+        ]
+    },
     "定义": {
         "prefix": [
             "def",
@@ -16,7 +28,7 @@
         "description": "KetherScript",
         "body": [
             "def main = {",
-            "   $1",
+            "    $1",
             "}"
 
         ]
