@@ -529,7 +529,7 @@
     "prefix": "Literal",
     "description": "(公有动作)注意：即使是 literal 100 也并非整数类型，如有需要请使用 #Type 动作。literal {token} | {token}",
     "body": [
-        "",
+        "literal",
     ]
   },
   "获取玩家的客户端语言。": {
