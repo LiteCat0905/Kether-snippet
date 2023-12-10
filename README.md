@@ -13,7 +13,7 @@
 ![图](https://pic.imgdb.cn/item/6570a2d2c458853aef039400.png)
 ### 输入文字自动补全！
 ![动图](https://pic.imgdb.cn/item/6570a2cbc458853aef037198.gif)
-> 我们已经实现了所有由 TabooLib 提供的公有动作以及原生动作、Chemdah、QuestEngine的补全以及提示 (类似WIKI)
+> 插件已经实现了所有由 TabooLib 提供的公有动作以及原生动作、Chemdah、QuestEngine的补全以及提示 (类似WIKI)
 
 ### **[ 测试 ]** 打开文件 【光标选中文件名(例如 *litecat.ks* ) 按下 `Ctrl` + `F12` 即可跳转工作区下为*litecat.ks*的文件】__[ 支持在YAML/KetherScript 中使用 ]__
 ### **[ 测试 ]** 对KETHERSCRIPT的格式化程序
