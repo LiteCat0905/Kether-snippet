@@ -1,0 +1,140 @@
+{
+    "name": "kether",
+    "scopeName": "source.ks",
+    "fileTypes": [
+        "ks"
+    ],
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#variables"
+        },
+        {
+            "include": "#actions"
+        },
+        {
+            "include": "#conditionals"
+        },
+        {
+            "include": "#loops"
+        },
+        {
+            "include": "#errors"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.kether",
+                    "match": "#.*$"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.function.kether",
+                    "match": "\\b(talk|script|random2|print|tell|while|warning|toast|title|switch|subtitle|split|sound|scale|round|perm|map|join|javascript|second|year|month|minute|hour|command|await_any|await_all|actionbar)\\b"
+                },
+                {
+                    "name": "keyword.control.kether",
+                    "match": "\\b(run|stop|as|to|set|get|repeat|pause|pass|else|optional|if|check|math|for|break|call|async|await)\\b"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.kether",
+                    "match": "\\b(add|sub|mul|div|inline|player)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.kether",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.kether",
+                            "match": "\\\\."
+                        }
+                    ]
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.kether",
+                    "match": "\\b\\d+\\b"
+                }
+            ]
+        },
+        "variables": {
+            "patterns": [
+                {
+                    "name": "variable.kether",
+                    "match": "\\b(&[a-f0-9klmnor])\\b"
+                },
+                {
+                    "name": "variable.kether",
+                    "match": "\\b\\w+\\b"
+                }
+            ]
+        },
+        "conditionals": {
+            "patterns": [
+                {
+                    "name": "keyword.control.kether",
+                    "match": "\\b(check|==|is|!=|not|>=|<=|>|<)\\b"
+                },
+                {
+                    "name": "keyword.operator.kether",
+                    "match": "\\b(=\\?|=!|is?)\\b"
+                }
+            ]
+        },
+        "loops": {
+            "patterns": [
+                {
+                    "name": "keyword.control.kether",
+                    "match": "\\b(while|for|break)\\b"
+                }
+            ]
+        },
+        "errors": {
+            "patterns": [
+                {
+                    "name": "invalid.illegal.kether",
+                    "match": "\\b(\".*\"as|math\\s+\\w+\\s+\\[\\d+\\d*\\d*\\])\\b"
+                },
+                {
+                    "name": "invalid.deprecated.kether",
+                    "match": "\\b(\".*\"|%.*?%|-.+?_|-.+?_)\\b(?!\\s+papi)"
+                },
+                {
+                    "name": "invalid.deprecated.kether",
+                    "match": "\\b(\".*\"|%.*?%|-.+?_|-.+?_)\\b(?=\\s+{{)"
+                }
+            ]
+        }
+    }
+}
